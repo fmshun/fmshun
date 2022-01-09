@@ -1,0 +1,155 @@
+body {
+  padding-top: 8px;
+  background-color: #f6f5f9;
+
+  // -----顶部导航样式修改
+  .navigation-bar {
+    background: #fff;
+
+    &.andriod{
+      .navigation-bar-wrap {
+        padding-top: 14px !important;
+      }
+    }
+
+    .navigation-bar-wrap {
+      .navigation-bar-menu {
+        .left {
+          .background_image('../projects/redeem/assets/back.png', 12px, 20px);
+        }
+
+        .title {
+          .f_s_c_h(PingFangSC-Regular, 17px, #000, 45px);
+
+          font-weight: bold;
+        }
+
+        .right {
+          letter-spacing: 0;
+          .f_s_c_h(PingFangSC-Regular, 15px, #4a90e2, 40px);
+        }
+      }
+    }
+
+    &.andriod{
+      padding-top: 2px;
+    }
+
+    &+.wrapper.fixed {
+      top: 60px;
+      bottom: 70px;
+      overflow-y: scroll!important;
+    }
+  }
+
+  .top {
+    padding: 48px 20px 30px;
+    margin-top: 8px;
+
+    .success {
+      display: block;
+      margin: 0 auto 22px;
+      .w_h(60px, 60px);
+    }
+
+    .title {
+      .f_s_c_h(PingFangSC-Regular, 22px, #323232, 30px);
+
+      font-weight: bold;
+      margin-bottom: 45px;
+    }
+
+    .info_list {
+      position: relative;
+      margin-bottom: 60px;
+
+      &::before {
+        .line(0, 0, #e9e9e9);
+
+        bottom: -30px;
+      }
+
+      .f_s_c_h(PingFangSC-Regular, 15px, #666, 21px);
+
+      .flex {
+        &:first-child {
+          margin-bottom: 14px;
+        }
+
+        .flex_item {
+          color: #4a4a4a;
+        }
+      }
+    }
+
+    .time_list {
+      .time_title {
+        .f_s_c_h(PingFangSC-Regular, 13px, #333, 18px);
+
+        margin-bottom: 2px;
+      }
+
+      .time {
+        .f_s_c_h(PingFangSC-Regular, 13px, #6d6d6d, 18px);
+
+        margin-bottom: 20px;
+      }
+
+      .progress {
+        display: block;
+        width: 100%;
+        margin-bottom: 20px;
+      }
+
+      .tips {
+        .f_s_c_h(PingFangSC-Regular, 12px, #ccc, 17px);
+      }
+    }
+  }
+
+  .wechat {
+    padding: 17px 20px;
+    margin-top: 8px;
+    .flex_item {
+      .f_s_c_h(PingFangSC-Regular, 15px, #444, 24px);
+    }
+    .set {
+      height: 24px;
+    }
+  }
+
+  .resButton {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding-bottom: 20px;
+    background-color: #f6f5f9;
+    &.iphoneX {
+      padding-bottom: 34px;
+    }
+
+    div {
+      padding: 10px 0 11px;
+      margin: 0 15px;
+      background-color: #ff8300;
+      border-radius: 23px;
+
+      span {
+        .f_s_c_h(PingFangSC-Regular, 18px, #fff, 25px);
+      }
+    }
+  }
+
+  .iphoneX {
+    .resButton {
+      padding-bottom: 34px;
+    }
+  }
+
+  &.iphoneX{
+    .container .navigation-bar + .wrapper.fixed{
+      bottom: 84px;
+    }
+  }
+}

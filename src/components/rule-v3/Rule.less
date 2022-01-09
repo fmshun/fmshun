@@ -1,0 +1,200 @@
+.rule_container {
+    position: relative;
+
+    &::before {
+        .before();
+
+        top: 0;
+        right: -20px;
+        left: -20px;
+        height: 124px;
+        .background_image('./rule/assets/bg.png', 100%, 124px);
+    }
+
+    .rule_num {
+        font-size: 37px;
+        color: #ff5e52;
+        letter-spacing: 0;
+        text-align: center;
+        text-shadow: 2px 2px 4px rgba(255, 94, 82, 0.15);
+        padding-top: 19px;
+
+        div,
+        span {
+            font-family: PingFangSC-Semibold;
+        }
+    }
+
+    .rule_body {
+        margin-left: 167px;
+        padding-right: 167px;
+        transform: translate3d(0,0,0);
+        -webkit-transform: translate3d(0,0,0);
+    }
+
+    .rule_content_2 {
+        position: relative;
+        min-height: 82px;
+        padding-top: 42px;
+        padding-bottom: 20px;
+        margin-bottom: -20px;
+        touch-action: none;
+        /* &::before {
+            .before();
+
+            right: 0;
+            top: 20px;
+            left: 0;
+            z-index: 1;
+            height: 18px;
+            background-image: -webkit-linear-gradient(to right,
+                    rgba(255, 255, 255, 0.6),
+                    rgba(255, 255, 255, 0),
+                    rgba(255, 255, 255, 0.6));
+            background-image: linear-gradient(to right,
+                    rgba(255, 255, 255, 0.6),
+                    rgba(255, 255, 255, 0),
+                    rgba(255, 255, 255, 0.6));
+        } */
+    }
+
+    .rule_content {
+        position: relative;
+        z-index: 5;
+        min-height: 82px;
+        padding-top: 42px;
+        padding-bottom: 20px;
+        margin-bottom: -20px;
+        white-space: nowrap;
+        overflow: hidden;
+
+        .rule_pointer {
+            .w_h(10px, 55px);
+
+            position: absolute;
+            top: 4px;
+            right: 0;
+            left: 0;
+            z-index: 100;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .rule_body_contianer {
+            position: absolute;
+            left: 0;
+            top: -37px;
+            // bottom: 0;
+            // padding-top: 50px;
+            // padding-bottom: 15px;
+            // border: 1px solid red;
+            // height: 89px;
+        }
+
+        .rule_body {
+            position: relative;
+            padding-top: 46px;
+            padding-bottom: 20px;
+        }
+
+        .rule_one {
+            // 8px 12px 14px 0.5 3.5px
+            position: relative;
+            display: inline-block;
+            // width: 1px;
+            /* -webkit-transform: scaleX(.5);
+            transform: scaleX(.5); */
+            // height: 8px;
+            // margin-right: 3.5px;
+            vertical-align: top;
+            // background-color: #e0e0e0;
+
+            span {
+                /* -webkit-transform: scaleX(2);
+                transform: scaleX(2); */
+                display: inline-block;
+                font-size: 13px;
+                // margin-top: 13px;
+            }
+        }
+
+        /* .rule_one:first-child {
+            height: 14px;
+        }
+
+        .rule_one:nth-child(5n+1) {
+            height: 12px;
+        }
+
+        .rule_one:nth-child(10n+1) {
+            height: 14px;
+        } */
+    }
+
+    // 目标盈首页样式
+    &.target_home {
+        &::before {
+            .before();
+            top: 0;
+            right: 0;
+            left: 0;
+            height: 91px;
+            // 614 182
+            .background_image('./rule/assets/red_line.png', 100%, 91px);
+        }
+
+        .rule_content .rule_pointer{
+            top: 1px;
+        }
+
+        .rule_body {
+            margin-left: 155px;
+            padding-right: 155px;
+            padding-top: 43px;
+        }
+
+        .rule_num {
+            font-size: 68px;
+            color: #fc3438;
+            letter-spacing: -1px;
+            text-align: center;
+            padding-top: 0;
+            position: relative;
+            line-height: 98px;
+            // top: -7px;
+
+            div,
+            span {
+                font-family: PingFangSC-Semibold;
+            }
+
+            span {
+                position: relative;
+                // top: 7px;
+                font-size: 40px;
+            }
+        }
+
+        /* &::after {
+            .before();
+
+            right: 0;
+            top: 91px;
+            left: 0;
+            height: 54px;
+            background-image: linear-gradient(0deg, #dde2ee 0%, #ffffff 70%);
+            opacity: 0.44;
+            // background-image: linear-gradient(270deg, #FFFFFF 0%, rgba(255, 255, 255, 0.00) 51%, #FFFFFF 100%);
+        } */
+    }
+
+    &.android {
+        .rule_num {
+
+            div,
+            span {
+                font-weight: bold;
+            }
+        }
+    }
+}

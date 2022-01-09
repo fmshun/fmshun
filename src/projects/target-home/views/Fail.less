@@ -1,0 +1,92 @@
+#fail {
+  // 整体
+  .container {
+    // ---------------NavigationBar通用修改
+    .navigation-bar {
+      background-color: #fff;
+      // 背景图片
+      background-image: none;
+
+      .left {
+        background-image: url(../assets/back.png);
+        background-size: 12px;
+      }
+
+      .navigation-bar-menu {
+        .title {
+          font-family: PingFangSC-Regular;
+          font-size: 17px;
+          color: #000;
+        }
+      }
+    }
+
+    .wrapper {
+      padding-top: 8px;
+
+      .error_container {
+        padding-top: 45px;
+        padding-bottom: 89px;
+
+        .img {
+          .w_h(65px, 65px);
+
+          display: block;
+          margin: 0 auto 20.6px;
+        }
+
+        .title {
+          margin-bottom: 8px;
+          font-weight: bold;
+          .f_s_c_h(PingFangSC-Regular, 22px, #323232, 30px);
+        }
+
+        .msg {
+          .f_s_c_h(PingFangSC-Regular, 14px, #999, 20px);
+        }
+      }
+    }
+
+    &.ios {
+      .wrapper {
+        .title {
+          font-family: PingFangSC-Medium;
+          font-weight: normal;
+        }
+      }
+    }
+  }
+
+  footer {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #f0f0f0;
+    // height: 77px;
+
+    div {
+      padding: 14px 0;
+      margin: 0 15px 20px;
+      line-height: 16px;
+      letter-spacing: 0;
+      background: #1e86f8;
+      border-radius: 22px;
+      .f_s_c_h(PingFangSC-Regular, 17px, #fff, 16px);
+    }
+  }
+}
+
+body {
+  &.iphoneX,
+  &.iphoneXR,
+  &.iphoneXSMax {
+    #fail {
+      footer {
+        div {
+          margin-bottom: 34px;
+        }
+      }
+    }
+  }
+}

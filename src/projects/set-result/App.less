@@ -1,0 +1,38 @@
+.wrapper {
+  .navigation-bar {
+    .navigation-bar-wrap {
+      background-color: white;
+
+      .navigation-bar-menu {
+        .right {
+          padding-right: 15px;
+          font-size: 12px;
+        }
+
+        .left {
+          -webkit-background-size: 8px 16px;
+          background-size: 8px 16px;
+        }
+      }
+    }
+
+    &.iphone + .content {
+      top: 63px;
+    }
+
+    &.iphoneX + .content,
+    &.iphoneXR + .content,
+    &.iphoneXSMax + .content {
+      top: 80px;
+    }
+  }
+
+  .content {
+    position: fixed;
+    top: 44px;
+    left: 0;
+    width: 100%;
+    padding-bottom: 20px;
+    overflow-y: auto;
+  }
+}

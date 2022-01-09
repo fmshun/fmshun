@@ -1,0 +1,203 @@
+body,
+html {
+    background: #f7f8fa;
+}
+
+.nav-top-w {
+    z-index: 999;
+}
+
+.edit-stop-param {
+    padding-top: 10px;
+    overflow-y: scroll;
+
+    // padding-bottom: 66px;
+    .title {
+        font-family: PingFangSC-Medium;
+        font-size: 17px;
+        line-height: 24px;
+        color: #323232;
+        text-align: left;
+        letter-spacing: 0;
+    }
+
+    .set-rate-w {
+        padding: 26px 20px 20px 20px;
+        background-color: #fff;
+
+        .desc {
+            margin-top: 4px;
+            font-family: PingFangSC-Light;
+            font-size: 15px;
+            line-height: 21px;
+            color: #666666;
+            text-align: left;
+            letter-spacing: 0;
+        }
+
+        .under-desc {
+            color: #9B9B9B;
+            font-size: 15px;
+            font-family: PingFangSC-Regular;
+            text-align: center;
+            padding-top: 16px;
+            // margin-top: -42px;
+        }
+
+        .rate-swiper-w {
+            height: 192px;
+            margin-top: 23px;
+
+            .tip {
+                font-family: PingFangSC-Regular;
+                font-size: 15px;
+                color: #9b9b9b;
+                text-align: center;
+                letter-spacing: 0;
+            }
+        }
+    }
+
+    .set-stop-w {
+        padding: 26px 0 2px 0;
+        margin-top: 10px;
+        background-color: #fff;
+        margin-bottom: 86px;
+
+        .title {
+            padding: 0 20px;
+            margin-bottom: 2px;
+        }
+
+        .set-stop {
+            &:last-child {
+                .inner::after {
+                    border: 0;
+                }
+            }
+
+            // padding-left: 33px;
+            &.selected {
+                background-image: linear-gradient(to bottom, #fcfdff, white);
+
+                .inner::before {
+                    position: absolute;
+                    top: 28px;
+                    left: 0;
+                    display: inline-block;
+                    width: 20px;
+                    height: 20px;
+                    content: '';
+                    background-image: url(./images/selected.png);
+                    background-repeat: no-repeat;
+                    background-size: 100% 100%;
+                }
+            }
+
+            .inner {
+                position: relative;
+                padding: 25px 0 25px 33px;
+                margin-right: 20px;
+                margin-left: 20px;
+
+                &::before {
+                    position: absolute;
+                    top: 26px;
+                    left: 0;
+                    display: inline-block;
+                    width: 22px;
+                    height: 22px;
+                    content: '';
+                    background-image: url(./images/unselect.png);
+                    background-repeat: no-repeat;
+                    background-size: 100% 100%;
+                }
+
+                &::after {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    box-sizing: border-box;
+                    display: block;
+                    width: 200%;
+                    height: 200%;
+                    content: ' ';
+                    border-bottom: 1px solid #f2f2f2;
+                    border-radius: 0;
+                    -webkit-transform: scale(0.5, 0.5);
+                    transform: scale(0.5, 0.5);
+                    -webkit-transform-origin: 0 0;
+                    transform-origin: 0 0;
+                }
+
+                .l1 {
+                    font-family: PingFangSC-Regular;
+                    font-size: 17px;
+                    color: #323232;
+                    text-align: left;
+                    letter-spacing: 0;
+
+                    i {
+                        font-size: 15px;
+                    }
+                }
+
+                .l2 {
+                    font-family: PingFangSC-Regular;
+                    font-size: 13px;
+                    color: #9b9b9b;
+                    text-align: left;
+                    letter-spacing: 0;
+                    margin-top: 4px;
+                }
+            }
+        }
+    }
+
+    .btn-ensure {
+        // margin-top: 40px;
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        padding: 10px 0;
+        background-color: #f7f8fa;
+
+        div {
+            width: 347px;
+            margin: 0 auto;
+            font-family: PingFangSC-Regular;
+            font-size: 17px;
+            line-height: 46px;
+            color: #ffffff;
+            text-align: center;
+            letter-spacing: 0;
+            background-color: #ededed;
+            border-radius: 23px;
+        }
+
+        &.highlight {
+            div {
+                background-color: #ff8300;
+            }
+        }
+    }
+}
+
+.iphoneX {
+    .btn-ensure {
+        padding-bottom: 34px;
+    }
+
+    .set-stop-w {
+        // 86+34
+        margin-bottom: 120px;
+    }
+
+}
+
+.android {
+    .title {
+        font-weight: bold;
+    }
+}

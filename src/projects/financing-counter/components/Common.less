@@ -1,0 +1,158 @@
+// ------字体
+.font_family(@f) {
+  font-family: @f, sans-serif;
+}
+
+.s_c_h(@size, @color, @height) {
+  font-size: @size;
+  line-height: @height;
+  color: @color;
+}
+
+.f_s_c_h(@family, @size, @color, @height) {
+  .font_family(@family);
+  .s_c_h(@size, @color, @height);
+}
+
+// ---------------文字居中、居右
+.text_right {
+  text-align: right;
+}
+
+.flex_center {
+  justify-content: center;
+}
+
+.text_center {
+  text-align: center;
+}
+
+// ---------------超出...
+// 一行
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.before {
+  position: absolute;
+  display: block;
+  content: '';
+}
+
+// ---------------before 一条线
+.line(@left, @right, @color) {
+  .before();
+
+  right: @right;
+  left: @left;
+  height: 1px;
+  background-color: @color;
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+}
+
+// ------宽高
+.w_h(@width, @height) {
+  width: @width;
+  height: @height;
+}
+
+.p_m(@px) {
+  padding: @px;
+  margin: -@px;
+}
+
+// ---------------flex布局相关
+.flex {
+  display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+}
+
+.flex_item {
+  flex: 1;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+
+  /* 解决当flex遇到white-sapce:nowrap的bug */
+  min-width: 0;
+}
+
+.flex_middle {
+  align-items: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+}
+
+.flex_bottom {
+  align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -webkit-align-items: flex-end;
+}
+
+.flex_top {
+  -webkit-align-items: flex-start;
+  align-items: flex-start;
+}
+
+.flex_wrap {
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+// 遮罩层
+.mask(@color) {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 999999;
+  overflow: hidden;
+  background-color: @color;
+}
+
+// 背景图片
+.background_image(@url, @width, @height) {
+  background-image: url(@url);
+  background-repeat: no-repeat;
+  background-size: @width @height;
+}
+
+.bg_white {
+  background-color: #fff;
+}
+
+// ---------------NavigationBar通用修改
+// 顶部padding px转vw
+.navigation-bar {
+  position: fixed;
+
+  &.iphone {
+    .navigation-bar-wrap {
+      padding-top: 20px !important;
+    }
+
+    & + .wrapper {
+      padding-top: 64px;
+    }
+  }
+
+  &.iphoneX,
+  &.iphoneXR,
+  &.iphoneXSMax {
+    .navigation-bar-wrap {
+      padding-top: 40px !important;
+    }
+
+    & + .wrapper {
+      padding-top: 84px;
+    }
+  }
+}
+
+.wrapper {
+  padding-top: 44px;
+}

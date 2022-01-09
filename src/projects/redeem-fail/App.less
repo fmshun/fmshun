@@ -1,0 +1,102 @@
+body {
+  padding-top: 8px;
+  background-color: #f6f5f9;
+
+  // -----顶部导航样式修改
+  .navigation-bar {
+    background: #fff;
+
+    &.andriod{
+      .navigation-bar-wrap {
+        padding-top: 14px !important;
+      }
+    }
+
+    .navigation-bar-wrap {
+      .navigation-bar-menu {
+        .left {
+          .background_image('../projects/redeem/assets/back.png', 12px, 20px);
+        }
+
+        .title {
+          .f_s_c_h(PingFangSC-Regular, 17px, #000, 45px);
+          // padding-top: 2px;
+
+          font-weight: bold;
+        }
+
+        .right {
+          letter-spacing: 0;
+          .f_s_c_h(PingFangSC-Regular, 15px, #4a90e2, 40px);
+        }
+      }
+    }
+
+    &.andriod{
+      padding-top: 2px;
+    }
+
+    &+.wrapper.fixed {
+      top: 60px;
+      bottom: 70px;
+      overflow-y: scroll!important;
+    }
+  }
+
+  .top {
+    padding: 48px 0 180px;
+    margin-top: 8px;
+
+    .error {
+      display: block;
+      margin: 0 auto 22px;
+      .w_h(60px, 60px);
+    }
+
+    .title {
+      .f_s_c_h(PingFangSC-Regular, 22px, #323232, 30px);
+
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .info {
+      .f_s_c_h(PingFangSC-Regular, 15px, #666, 21px);
+    }
+  }
+
+  .resButton {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding-bottom: 20px;
+    background-color: #f6f5f9;
+    &.iphoneX {
+      padding-bottom: 34px;
+    }
+
+    div {
+      padding: 10px 0 11px;
+      margin: 0 15px;
+      background-color: #ff8300;
+      border-radius: 23px;
+
+      span {
+        .f_s_c_h(PingFangSC-Regular, 18px, #fff, 25px);
+      }
+    }
+  }
+
+  .iphoneX {
+    .resButton {
+      padding-bottom: 34px;
+    }
+  }
+
+  &.iphoneX{
+    .container .navigation-bar + .wrapper.fixed{
+      bottom: 84px;
+    }
+  }
+}

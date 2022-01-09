@@ -1,0 +1,337 @@
+body {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  overflow-x: hidden;
+  font-family: 'PingFang-SC-Regular', 'Arial', '微软雅黑', '幼圆';
+  background-color: #f7f6f8;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+#header-area {
+  position: relative;
+  height: 64px;
+  background-color: #fff;
+}
+
+#header-area .back-img {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 39px;
+  height: 42px;
+  background: url(images/back.png) no-repeat 14px 13px;
+  background-size: 11px 19px;
+}
+
+#header-area .header-title {
+  position: absolute;
+  bottom: 7px;
+  left: 50%;
+  font-family: PingFangSC-Regular;
+  font-size: 16px;
+  line-height: 22px;
+  color: #000000;
+  letter-spacing: 0.55px;
+  -webkit-transform: translate(-50%, 0);
+  transform: translate(-50%, 0);
+}
+
+#top-word {
+  height: 192px;
+  background-size: 100% 100%;
+}
+
+.wrapper {
+  padding-top: 0;
+  overflow-y: scroll;
+  background-color: #fff;
+  height: 100%;
+  -webkit-overflow-scrolling: touch;
+
+  .tabs {
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 47px;
+    text-align: center;
+    background-color: #ffffff;
+    //justify-content: space-evenly;
+    &::before,
+    &::after {
+      display: block;
+      content: '';
+    }
+
+    .tab {
+      font-family: PingFangSC-Regular;
+      font-size: 14px;
+      color: #999999;
+      position: relative;
+      top: 10px;
+
+      &.selected {
+        position: relative;
+        font-family: PingFangSC-Medium;
+        font-size: 17px;
+        line-height: 24px;
+        color: #323232;
+        text-align: center;
+        letter-spacing: 0;
+
+        span {
+          padding-bottom: 11px;
+          border-bottom: 3px solid #ff8201;
+        }
+      }
+    }
+  }
+
+  .red {
+    color: #f64843;
+  }
+
+  .green {
+    color: #5e9f3b
+  }
+
+  .split {
+    font-weight: normal;
+    font-family: "PingFangSC-Light";
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    justify-content: space-between;
+    height: 35px;
+    font-size: 13px;
+    line-height: 35px;
+    color: #84929e;
+    background-color: #f7f6f8;
+  }
+
+  .split_left {
+    padding: 0 0 0 20px;
+  }
+
+  .split_right {
+    padding: 0 20px 0 0;
+  }
+
+  #hot-aip {
+    background-color: #fff;
+  }
+
+  #hot-aip .rank {
+    width: 32px;
+    height: 15px;
+    box-shadow: 2px 1px 4px 0 rgba(246, 72, 67, 0.18);
+  }
+
+  #hot-aip li:nth-child(1) .rank {
+    background: url(images/r1.png) no-repeat center;
+    background-size: 100% 100%;
+  }
+
+  #hot-aip li:nth-child(2) .rank {
+    background: url(images/r2.png) no-repeat center;
+    background-size: 100% 100%;
+  }
+
+  #hot-aip li:nth-child(3) .rank {
+    background: url(images/r3.png) no-repeat center;
+    background-size: 100% 100%;
+  }
+
+  #hot-aip .rankLeft {
+    width: 32px;
+    height: 20px;
+    font-family: PingFangSC-Regular;
+    font-size: 17px;
+    line-height: 20px;
+    color: #323232;
+    text-align: right;
+    text-shadow: 2px 1px 4px 0 rgba(246, 72, 67, 0.18);
+  }
+
+  #hot-aip .prdt-name {
+    max-width: 184px;
+    margin-left: 10px;
+    overflow: hidden;
+    font-family: PingFangSC-Regular;
+    font-size: 17px;
+    line-height: 20px;
+    color: #323232;
+    text-overflow: ellipsis;
+    letter-spacing: 0;
+    white-space: nowrap;
+  }
+
+  #hot-aip .prdt-code {
+    float: right;
+    margin-left: 4px;
+    font-family: PingFangSC-Regular;
+    font-size: 18px;
+    line-height: 18px;
+    color: #4a4a4a;
+    letter-spacing: 0;
+  }
+
+  #hot-aip li {
+    padding: 0 20px;
+  }
+
+  #hot-aip .name-area > span {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  ul li {
+    position: relative;
+    height: 90px;
+    background-color: #fff;
+  }
+
+  ul li:not(:last-child)::after {
+    position: absolute;
+    right: 20px;
+    bottom: 0;
+    left: 20px;
+    height: 1px;
+    content: '';
+    background-color: #f2f2f2;
+    -webkit-transform: scale(1, 0.5);
+    transform: scale(1, 0.5);
+    -webkit-transform-origin: 0 100%;
+    transform-origin: 0 100%;
+  }
+
+  .name-area {
+    position: relative;
+    padding-top: 24px;
+    padding-bottom: 10px;
+  }
+
+  .sec {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .sec-left {
+    padding-left: 42px;
+    font-size: 13px;
+    line-height: 10px;
+    color: #9b9b9b;
+  }
+
+  .sec-right {
+    padding-left: 12px;
+    font-size: 15px;
+    line-height: 10px;
+    //color: #f64843;
+  }
+
+  .noData img {
+    width: 174px;
+    height: 100px;
+  }
+
+  .noData {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .noData span {
+    padding-top: 4px;
+    font-size: 13px;
+    line-height: 18px;
+    color: #c6c6c6;
+  }
+
+  .backup {
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+  }
+
+  .slide-content {
+    position: relative;
+  }
+}
+
+.flex {
+  display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+}
+
+.android #header-area {
+  height: 46px;
+}
+
+.iphoneX #header-area {
+  height: 87px;
+}
+
+#titleTab {
+  padding: 0 16px;
+  height: 47px;
+  //will-change: transform; // 创建新的渲染层
+  //transition: transform 1s ease-out;
+}
+
+/* 每个nav */
+#titleTab .swiper-slide {
+  display: table;
+  line-height: 22px;
+  padding: 11px 0px 12px 0px;
+  width: auto;
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  color: #999999;
+  -webkit-transition: all ease-out .1s;
+  transition: transform 0.3s ease-out;
+  text-align: center;
+  letter-spacing: 0;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+#titleTab .selected {
+  font-weight: normal;
+  padding: 11px 0px 11px 0px;
+  font-size: 17px;
+  color: #323232;
+  transform: scale(1.021);
+  transition: transform 0.3s;
+}
+
+#titleTab .selected:before {
+  content: "";
+  display: block;
+  height: 3px;
+  background-color: #FF8300;
+  position: absolute;
+  left: 5px;
+  right: 5px;
+  bottom: 0;
+  margin: 0 auto;
+  border-radius: 1px;
+}

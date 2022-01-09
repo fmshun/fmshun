@@ -1,0 +1,82 @@
+body,
+html {
+    background-color: #f7f8fa;
+}
+
+.conent-wrapper {
+    min-height: 369px;
+    padding: 48px 45px 45px 45px;
+    background-color: white;
+
+    &.target {
+        min-height: auto;
+
+        &+.resButton {
+            div {
+                background-color: #1e86f8;
+            }
+        }
+    }
+
+    .icon {
+        display: block;
+        width: 65px;
+        height: 65px;
+        margin: 0 auto 21px auto;
+    }
+
+    .l1 {
+        margin-bottom: 8px;
+        font-family: PingFangSC-Medium;
+        font-size: 22px;
+        line-height: 30px;
+        color: #323232;
+        text-align: center;
+    }
+
+    .l2 {
+        font-family: PingFangSC-Regular;
+        font-size: 14px;
+        line-height: 20px;
+        color: #999999;
+        text-align: center;
+    }
+}
+
+.resButton {
+    &.iphoneX {
+        padding-bottom: 34px;
+    }
+
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding-top: 15px;
+    padding-bottom: 20px;
+    background-color: #f7f8fa;
+
+    div {
+        display: block;
+        width: 343px;
+        margin: 0 auto;
+        font-size: initial;
+        line-height: 44px;
+        text-align: center;
+        background-color: #ff8300;
+        border-radius: 22px;
+
+        span {
+            font-family: PingFangSC-Regular;
+            font-size: 17px;
+            color: #ffffff;
+        }
+    }
+}
+
+.android {
+    .conent-wrapper {
+        .l1 {
+            font-weight: bold;
+        }
+    }
+}

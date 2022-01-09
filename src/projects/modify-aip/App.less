@@ -1,0 +1,102 @@
+html,
+body,
+#app {
+    background-color: #f7f8fa;
+}
+
+.top-w {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 3;
+    padding-top: 20px;
+    padding-bottom: 3px;
+    background-color: #fafafa;
+
+    &.android {
+        padding-top: 13px;
+    }
+
+    &.iphoneX {
+        padding-top: 40px;
+    }
+
+    .top {
+        position: relative;
+        display: -webkit-box;
+        height: 45px;
+        line-height: 45px;
+        -webkit-box-pack: justify;
+
+        .left {
+            position: relative;
+            z-index: 1;
+            min-width: 50px;
+            background: url(./images/back.png) no-repeat center;
+            -webkit-background-size: 8px 16px;
+            background-size: 12px 20px;
+        }
+
+        .tabs {
+            position: absolute;
+            // top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            text-align: center;
+
+            .tab {
+                display: inline-block;
+                min-width: 110px;
+                font-family: PingFangSC-Regular;
+                font-size: 17px;
+                color: #000000;
+
+                &.selected {
+                    // line-height: 18px;
+                    position: relative;
+                    font-family: PingFangSC-Medium;
+                    font-size: 20px;
+                    color: #000000;
+                    text-align: center;
+                    letter-spacing: 0;
+
+                    &::after {
+                        position: absolute;
+                        bottom: 0;
+                        left: 44px;
+                        display: inline-block;
+                        width: 24px;
+                        height: 3px;
+                        content: '';
+                        background-color: #ff8400;
+                    }
+                }
+            }
+        }
+
+        .right {
+            position: relative;
+            z-index: 1;
+            min-width: 50px;
+            padding-right: 14px;
+            font-size: 14px;
+            background: url(./images/qa.png) no-repeat center;
+            -webkit-background-size: 19px 19px;
+            background-size: 20px 20px;
+        }
+    }
+}
+
+.modify-aip-wrapper {
+    padding-bottom: 63px;
+}
+
+.android {
+    .tabs {
+        .tab.selected {
+            font-weight: bold;
+        }
+    }
+}

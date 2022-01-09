@@ -1,0 +1,164 @@
+.rule_container {
+    position: relative;
+    margin: 0 4px;
+    overflow: hidden;
+
+    &::before {
+        .before();
+
+        top: 0;
+        right: 0;
+        left: 0;
+        height: 124px;
+        .background_image('./rule/assets/bg.png', 100%, 124px);
+    }
+
+    .rule_num {
+        .f_s_c_h(PingFangSC-Regular, 37px, #ff5e52, 52px);
+
+        margin-top: 19px;
+        margin-bottom: 10px;
+        font-weight: bold;
+        text-align: center;
+        text-shadow: 2px 2px 4px rgba(255, 94, 82, 0.15);
+        letter-spacing: 0;
+    }
+
+    .rule_pointer {
+        .w_h(10px, 55px);
+
+        position: absolute;
+        top: -6px;
+        right: 0;
+        left: 0;
+        z-index: 2;
+        display: block;
+        margin: 0 auto;
+    }
+
+    .rule_content {
+        position: relative;
+        z-index: 5;
+        min-height: 82px;
+        padding-top: 42px;
+        padding-bottom: 20px;
+        margin-bottom: -20px;
+
+        .rule_body {
+            position: relative;
+            white-space: nowrap;
+            height: 74px;
+            padding-top: 44px;
+            // padding-bottom: 20px;
+            margin-top: -40px;
+            &:before {
+                .before();
+
+                right: 0;
+                left: 0;
+                bottom: 4px;
+                height: 14px;
+                background-image: url(./assets/rectangle.png);
+                background-size: 100% 100%;
+                background-repeat: no-repeat;
+                z-index: 1;
+            }
+        }
+
+        .scroll {
+            position: absolute;
+            left: 0;
+            top: 41px;
+            margin-left: 50%;
+            padding-right: 100%;
+        }
+
+        .rule_one {
+            display: inline-block;
+            vertical-align: top;
+            position: relative;
+
+            .rule_one_img {
+                display: block;
+                .w_h(38px, 14px);
+            }
+
+            .rule_one_txt {
+                .f_s_c_h(PingFangSC-Regular, 13px, #333, 18px);
+
+                margin-left: -10px;
+                letter-spacing: 0;
+            }
+
+            &:last-child {
+                .rule_one_txt {
+                    margin-left: 30px;
+                }
+            }
+        }
+    }
+
+    // 目标盈首页样式
+    &.target_home {
+        margin: 0;
+
+        &::before {
+            // 614 182
+            .background_image('./rule/assets/red_line.png', 100%, 91px);
+        }
+
+        .scroll {
+            top: 40px;
+        }
+
+        .rule_pointer {
+            top: -8px;
+        }
+
+        &::after {
+            .before();
+
+            right: 0;
+            top: 80px;
+            left: 0;
+            height: 54px;
+            background-image: linear-gradient(0deg, #dde2ee 0%, #ffffff 70%);
+            opacity: 0.44;
+        }
+
+        .rule_body {
+            height: 94px;
+            padding-top: 42px;
+            padding-bottom: 20px;
+            margin-top: -40px;
+
+            &:before {
+                .before();
+
+                right: 0;
+                left: 0;
+                bottom: 24px;
+                height: 14px;
+                background-image: url(./assets/rectangle.png);
+                background-size: 100% 100%;
+                background-repeat: no-repeat;
+                z-index: 1;
+            }
+        }
+
+        .rule_num {
+            .f_s_c_h(PingFangSC-Regular, 68px, #fc3438, 95px);
+
+            margin-top: -7px;
+            margin-bottom: 4px;
+            font-weight: bold;
+            letter-spacing: -1px;
+
+            span {
+                position: relative;
+                top: 7px;
+                font-size: 40px;
+            }
+        }
+    }
+}

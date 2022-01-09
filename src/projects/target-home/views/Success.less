@@ -1,0 +1,186 @@
+#success {
+
+  // 整体
+  .container {
+
+    // ---------------NavigationBar通用修改
+    .navigation-bar {
+      background-color: #fff;
+      // 背景图片
+      background-image: none;
+
+      .left {
+        background-image: url(../assets/back.png);
+        background-size: 12px;
+      }
+
+      .navigation-bar-menu {
+        .title {
+          font-family: PingFangSC-Regular;
+          font-size: 17px;
+          color: #000;
+        }
+      }
+    }
+
+    .wrapper {
+      bottom: 80px;
+      padding-top: 8px;
+
+      .success_top {
+        padding-top: 48px;
+        padding-bottom: 34px;
+
+        .img {
+          .w_h(60px, 60px);
+
+          display: block;
+          margin: 0 auto 22px;
+        }
+
+        .title {
+          margin-bottom: 38px;
+          font-weight: bold;
+          .f_s_c_h(PingFangSC-Regular, 22px, #323232, 30px);
+        }
+
+        .infos {
+          margin-bottom: 10px;
+          .f_s_c_h(PingFangSC-Regular, 16px, #333, 22px);
+        }
+
+        .tip {
+          .f_s_c_h(PingFangSC-Regular, 14px, #999, 20px);
+        }
+      }
+
+      .success_center {
+        padding: 20px;
+        margin-top: 8px;
+
+        &>.flex {
+          &:not(:first-child) {
+            margin-top: 15px;
+          }
+
+          .f_s_c_h(PingFangSC-Regular, 14px, #666, 20px);
+
+          .val {
+            color: #323232;
+
+            .htsc {
+              img {
+                .w_h(16px, 16px);
+
+                margin-right: 9px;
+              }
+            }
+          }
+        }
+      }
+
+      .wechat-wrapper {
+        position: relative;
+        padding: 17px 20px;
+        margin-top: 10px;
+        background: #fff;
+
+        .desc {
+          font-family: PingFangSC-Regular;
+          font-size: 15px;
+          color: #444444;
+          text-align: left;
+          letter-spacing: 0;
+        }
+
+        .btn-go {
+          position: absolute;
+          top: 17px;
+          right: 20px;
+          display: inline-block;
+          width: 63px;
+          font-size: initial;
+          line-height: 24px;
+          text-align: center;
+          border: 1px solid rgba(74, 144, 226, 0.36);
+          border-radius: 2px;
+
+          span {
+            font-family: PingFangSC-Regular;
+            font-size: 13px;
+            color: #4a90e2;
+          }
+        }
+      }
+
+      .ads-wrapper {
+        margin-top: 10px;
+
+        img {
+          display: block;
+          width: 100%;
+        }
+      }
+    }
+
+    &.ios {
+      .wrapper {
+        .title {
+          font-family: PingFangSC-Medium;
+          font-weight: normal;
+        }
+      }
+    }
+  }
+
+  footer {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #f0f0f0;
+    // height: 77px;
+
+    div {
+      padding: 14px 0;
+      margin: 0 15px 20px;
+      line-height: 16px;
+      letter-spacing: 0;
+      background: #1e86f8;
+      border-radius: 22px;
+      .f_s_c_h(PingFangSC-Regular, 17px, #fff, 16px);
+    }
+  }
+}
+
+body {
+
+  &.iphoneX,
+  &.iphoneXR,
+  &.iphoneXSMax {
+    #success {
+
+      .navigation-bar.iphoneX .navigation-bar-wrap,
+      .navigation-bar.iphoneXR .navigation-bar-wrap,
+      .navigation-bar.iphoneXSMax .navigation-bar-wrap .wrapper {
+        padding-top: 44px !important;
+      }
+
+      .navigation-bar.iphoneX+.wrapper.fixed,
+      .navigation-bar.iphoneXR+.wrapper.fixed,
+      .navigation-bar.iphoneXSMax+.wrapper.fixed {
+        top: 88px;
+      }
+
+      .wrapper {
+        padding-bottom: 0;
+      }
+
+      footer {
+        div {
+          margin-bottom: 34px;
+        }
+      }
+    }
+  }
+}

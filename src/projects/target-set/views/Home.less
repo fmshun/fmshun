@@ -1,0 +1,53 @@
+#target-set {
+    // 整体
+    .container {
+      // ---------------NavigationBar通用修改
+      .navigation-bar {
+        background-image: -webkit-linear-gradient(
+          -1deg,
+          #2b73f0 0%,
+          #177ff7 100%
+        );
+        background-image: linear-gradient(-1deg, #2b73f0 0%, #177ff7 100%);
+  
+        .navigation-bar-menu {
+          .left {
+            background-image: url(../assets/nav_left.png);
+            background-size: 13px;
+          }
+        }
+      }
+  
+      .wrapper {
+        padding-bottom: 0;
+      }
+    }
+  }
+  
+  body {
+    &.iphoneX,
+    &.iphoneXR,
+    &.iphoneXSMax {
+      #target-set {
+        .navigation-bar-wrap{
+          padding-top: 43px!important;
+        }
+        .wrapper {
+          top: 88px;
+          // padding-bottom: 34px;
+          .edit-aip-content-wrapper{
+            padding-bottom: 80px;
+          }
+        }
+      }
+    }
+
+    &.andriod{
+      #target-set {
+        .strong {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+  

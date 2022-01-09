@@ -1,0 +1,145 @@
+.keyboard {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    -webkit-box-sizing: initial;
+    box-sizing: initial;
+    height: 215px;
+    overflow: hidden;
+    background-color: #fff;
+
+    ul,
+    li {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+
+    li.on {
+        background-color: #ededed;
+    }
+
+    .kLeft {
+        width: 282px;
+        overflow: hidden;
+
+        li {
+            position: relative;
+            float: left;
+            width: 94px;
+            height: 54px;
+            font-family: PingFangSC-Regular, sans-serif;
+            font-size: 22px;
+            line-height: 54px;
+            color: #030303;
+            text-align: center;
+            letter-spacing: 0;
+        }
+    }
+
+    .kRight {
+        li {
+            position: relative;
+            width: 93px;
+            height: 108px;
+            font-family: PingFangSC-Regular, sans-serif;
+            font-size: 22px;
+            line-height: 108px;
+            color: #030303;
+            text-align: center;
+            letter-spacing: 0;
+
+            &:last-child {
+                font-family: PingFangSC-Regular, sans-serif;
+                font-size: 20px;
+                color: #c5c5c5;
+            }
+
+            &.blue {
+                font-family: PingFangSC-Regular, sans-serif;
+                font-size: 20px;
+                color: #ffffff;
+                background: #007aff;
+            }
+        }
+
+        .delete {
+            img {
+                width: 27px;
+                height: 20px;
+            }
+        }
+    }
+
+    .kLeft,
+    .kRight {
+        position: relative;
+        float: left;
+    }
+
+    .kLeft::before,
+    .kRight::before {
+        position: absolute;
+        right: 0;
+        left: 0;
+        top: 0;
+        height: 1px;
+        content: '';
+        background-color: #eee;
+        -webkit-transform: scaleY(0.5);
+        -moz-transform: scaleY(0.5);
+        transform: scaleY(0.5);
+    }
+
+    .kLeft::after,
+    .kRight::after {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        height: 1px;
+        content: '';
+        background-color: #eee;
+        -webkit-transform: scaleY(0.5);
+        -moz-transform: scaleY(0.5);
+        transform: scaleY(0.5);
+    }
+
+    .kLeft li::before,
+    .kLeft li::after,
+    .kRight li::before,
+    .kRight li::after {
+        position: absolute;
+        top: 0;
+        left: -1px;
+        content: '';
+        background-color: #eee;
+    }
+
+    .kLeft li::before,
+    .kRight li::before {
+        top: -1px;
+        right: 0;
+        height: 1px;
+        -webkit-transform: scaleY(0.5);
+        -moz-transform: scaleY(0.5);
+        transform: scaleY(0.5);
+    }
+
+    .kLeft li::after,
+    .kRight li::after {
+        bottom: 0;
+        width: 1px;
+        -webkit-transform: scaleX(0.5);
+        -moz-transform: scaleX(0.5);
+        transform: scaleX(0.5);
+    }
+}
+
+.iphoneX {
+    .keyboard {
+        padding-bottom: 34px;
+    }
+}

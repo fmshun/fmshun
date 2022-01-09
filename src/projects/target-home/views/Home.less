@@ -1,0 +1,159 @@
+#target {
+
+  // 整体
+  .container {
+
+    // ---------------NavigationBar通用修改
+    .navigation-bar {
+      // 背景图片
+      background-image: url(../assets/nav_bg.png);
+
+      .left {
+        background-image: url(../assets/nav_left.png);
+        background-size: 13px;
+      }
+
+      &+.wrapper.fixed {
+        overflow-y: scroll !important;
+        padding-bottom: 0;
+      }
+    }
+
+    // ---------------内容部分
+    .wrapper {
+      bottom: 77px;
+
+      .wrapper_contaniner {
+        min-height: 100%;
+        padding-top: 130px;
+        .background_image('../projects/target/assets/banner.png', 100%, 100%);
+
+        // 卡片区域
+        .card {
+          .w_h(361px, 495px);
+          .background_image('../projects/target/assets/card.png', 361px, 495px);
+
+          padding: 41px 25px 0;
+          margin: -14px auto 0;
+
+          .title {
+            margin-bottom: 38px;
+            font-weight: bold;
+            letter-spacing: 0;
+            background-position: center center;
+            .f_s_c_h(PingFangSC-Regular, 18px, #323232, 25px);
+            .background_image('../projects/target/assets/line_2.png',
+              230px,
+              3px);
+          }
+        }
+
+        .product_container {
+          margin-top: 42px;
+
+          .product_title {
+            margin-bottom: 8px;
+            letter-spacing: 0;
+            .f_s_c_h(PingFangSC-Regular, 15px, #666666, 21px);
+          }
+
+          .product_select {
+            .product_selected {
+              .w_h(310px, 53px);
+              .background_image('../projects/target/assets/selected.png',
+                100%,
+                100%);
+
+              &.no_popular {
+                background-image: url(../assets/unselect.png);
+                background-size: 100% 50px;
+                background-position: 0 3px;
+              }
+
+              .name {
+                padding: 16px 15px 12px;
+                font-family: PingFangSC-Regular;
+                font-size: 17px;
+                color: #323232;
+                letter-spacing: 0;
+                .f_s_c_h(PingFangSC-Regular, 15px, #666, 21px);
+              }
+
+              .more {
+                // 12 16
+                .w_h(6px, 8px);
+
+                position: relative;
+                top: 3px;
+                margin-right: 20px;
+              }
+            }
+          }
+
+          .warning_tips {
+            margin-top: 20px;
+            text-align: justify;
+            letter-spacing: 0;
+            .f_s_c_h(PingFangSC-Light, 11px, #999, 17px);
+          }
+        }
+      }
+    }
+
+    &.ios {
+      .wrapper {
+        .card {
+          .title {
+            font-family: PingFangSC-Medium;
+            font-weight: normal;
+          }
+        }
+      }
+    }
+  }
+
+  footer {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 77px;
+    .background_image('../projects/target/assets/footer.png', 100%, 100%);
+
+    div {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      padding-top: 15px;
+      margin: 0 auto;
+      letter-spacing: 0;
+      .w_h(357px, 66px);
+      .background_image('../projects/target/assets/footer_button.png',
+        100%,
+        100%);
+      .f_s_c_h(PingFangSC-Regular, 17px, #ffffff, 16px);
+    }
+  }
+}
+
+body {
+
+  &.iphoneX,
+  &.iphoneXR,
+  &.iphoneXSMax {
+    #target {
+      .wrapper {
+        bottom: 107px;
+      }
+
+      footer {
+        height: 107px;
+
+        div {
+          bottom: 30px;
+        }
+      }
+    }
+  }
+}

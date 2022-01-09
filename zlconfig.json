@@ -1,0 +1,12 @@
+{
+  "pages": [
+    "modify-personal-info",
+    "edit-result-success",
+    "edit-result-fail",
+    "auto-transfer-desc",
+    "financing-counter",
+    "financing-search",
+    "send-post"
+  ],
+  "createdBy": "1.5.21"
+}

@@ -1,0 +1,226 @@
+body,
+html {
+    background-color: #f7f8fa;
+}
+#use-nav-top-app.edit-result-success{
+    padding-top: 76px;
+}
+.android {
+  &#use-nav-top-app {
+    padding-top: 69px;
+  }
+}
+
+.iphoneX {
+  &#use-nav-top-app {
+    padding-top: 96px;
+  }
+}
+::-webkit-scrollbar {
+    display: none;
+}
+
+.top-wrapper {
+    padding: 49px 10px 34px 10px;
+    background: #fff;
+
+    .success {
+        display: block;
+        width: 60px;
+        height: 60px;
+        margin: 0 auto 22px auto;
+    }
+
+    .l1 {
+        margin-bottom: 31px;
+        font-family: PingFangSC-Medium;
+        font-size: 22px;
+        line-height: 30px;
+        color: #323232;
+        text-align: center;
+    }
+
+    .l2 {
+        margin-bottom: 10px;
+        font-family: PingFangSC-Regular;
+        font-size: 16px;
+        line-height: 22px;
+        color: #333333;
+        text-align: center;
+    }
+
+    .l3 {
+        font-family: PingFangSC-Regular;
+        font-size: 14px;
+        line-height: 20px;
+        color: #999999;
+        text-align: center;
+    }
+}
+
+.content-wrapper {
+    padding: 20px;
+    margin-top: 10px;
+    background: #fff;
+
+    .bank {
+        span {
+            font-size: 14px;
+            color: #323232;
+        }
+    }
+
+    .htsc {
+        img {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            margin-top: -4px;
+            margin-right: 4px;
+            vertical-align: middle;
+        }
+    }
+
+    div {
+        margin-bottom: 15px;
+        line-height: 20px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        .left {
+            font-family: PingFangSC-Regular;
+            font-size: 14px;
+            color: #666666;
+            text-align: left;
+        }
+
+        .right {
+            float: right;
+            max-width: 250px;
+            overflow: hidden;
+            font-family: PingFangSC-Regular;
+            font-size: 14px;
+            color: #323232;
+            text-align: right;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    }
+}
+
+/* ----------微信设置提醒----------- */
+.wechat-wrapper {
+    position: relative;
+    padding: 17px 20px;
+    margin-top: 10px;
+    background: #fff;
+
+    .desc {
+        font-family: PingFangSC-Regular;
+        font-size: 15px;
+        color: #444444;
+        text-align: left;
+        letter-spacing: 0;
+    }
+
+    .btn-go {
+        position: absolute;
+        top: 17px;
+        right: 20px;
+        display: inline-block;
+        width: 63px;
+        font-size: initial;
+        line-height: 22px;
+        text-align: center;
+        
+
+        div {
+            font-family: PingFangSC-Regular;
+            font-size: 13px;
+            color: #4a90e2;
+            position:relative;
+            &:before{
+             position: absolute;
+                top: 0;
+                left: 0;
+                box-sizing: border-box;
+                display: block;
+                width: 200%;
+                height: 200%;
+                pointer-events: none;
+                content: ' ';
+                border: 1px solid rgba(74, 144, 226, 0.36);
+                border-radius: 4px;
+                -webkit-transform: scale(0.5, 0.5);
+                transform: scale(0.5, 0.5);
+                -webkit-transform-origin: 0 0;
+                transform-origin: 0 0;
+            }
+        }
+    }
+}
+
+.resButton {
+    &.iphoneX {
+        padding-bottom: 34px;
+    }
+
+    &.rel {
+        position: fixed;
+        bottom: 0;
+        padding-top: 10px;
+    }
+
+    width: 100%;
+    padding-top: 55px;
+    padding-bottom: 20px;
+    background-color: #f7f8fa;
+
+    &.blue {
+        div {
+            background-color: #1e86f8;
+        }
+    }
+
+    div {
+        display: block;
+        width: 343px;
+        margin: 0 auto;
+        font-size: initial;
+        line-height: 44px;
+        text-align: center;
+        background-color: #ff8300;
+        border-radius: 22px;
+
+        span {
+            font-family: PingFangSC-Regular;
+            font-size: 17px;
+            color: #ffffff;
+        }
+    }
+}
+
+.ads-wrapper {
+    margin-top: 10px;
+
+
+    img {
+        display: block;
+        width: 100%;
+        height: 89px;
+    }
+
+    &.rel {
+        padding-bottom: 80px;
+    }
+}
+
+.android {
+    .top-wrapper {
+        .l1 {
+            font-weight: bold;
+        }
+    }
+}

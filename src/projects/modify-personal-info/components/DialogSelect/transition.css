@@ -1,0 +1,45 @@
+.v-fade-enter-active,
+.v-fade-leave-active {
+  opacity: 1;
+  transition: opacity linear 0.2s;
+}
+.v-fade-enter,
+.v-fade-leave-to {
+  opacity: 0;
+}
+.v-dialog-enter-active {
+  animation: v-dialog-in 0.5s;
+}
+.v-dialog-leave-active {
+  animation: v-dialog-out 0.3s;
+}
+
+@keyframes v-dialog-in {
+  0% {
+    opacity: 0;
+    transform: scale(1.185);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes v-dialog-out {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+}
+.v-mask-enter,
+.v-mask-leave-active {
+  opacity: 0;
+}
+.v-mask-leave-active,
+.v-mask-enter-active {
+  transition: opacity 0.3s;
+}

@@ -1,0 +1,148 @@
+body {
+  background-color: #f7f8fa;
+
+  .container {
+
+    .navigation-bar {
+      background-color: #f7f8fa;
+      background-image: none;
+
+      .navigation-bar-menu {
+        .left {
+          background-image: url(./assets/back.png);
+          background-size: 11px;
+        }
+
+        .title {
+          font-family: PingFangSC-Regular;
+          font-size: 17px;
+          color: #000000;
+          letter-spacing: 0;
+        }
+      }
+
+      &+.wrapper.fixed {
+        bottom: 66px;
+        overflow-y: scroll !important;
+        -webkit-overflow-scrolling: touch;
+      }
+    }
+
+    // padding-top: 10px;
+
+    .cards{
+      padding-top: 25px;
+      padding-bottom: 138px;
+    }
+
+    .card {
+      padding: 13px 20px 15px;
+      margin: 15px;
+      background-color: #fff;
+      border-radius: 4px;
+      box-shadow: 0 1px 11px 2px rgba(197, 197, 197, 0.1);
+
+      &:first-child {
+        margin-top: 0;
+      }
+
+      .top {
+        position: relative;
+        margin-right: -10px;
+        margin-bottom: 29px;
+
+        &::before {
+          .line(0, -10px, rgba(151, 151, 151, 0.16));
+
+          bottom: -11px;
+        }
+
+        .name {
+          margin-right: 7px;
+          font-weight: bold;
+          letter-spacing: 0;
+          .f_s_c_h(PingFangSC-Regular, 16px, #323232, 22px);
+        }
+
+        .label {
+          .f_s_c_h(PingFangSC-Regular, 12px, rgba(59, 123, 254, 0.8), 17px);
+
+          padding: 2px 4px;
+          margin-right: 10px;
+          white-space: nowrap;
+          background-color: #f2f8ff;
+          border-radius: 3px;
+        }
+      }
+
+      .bottom {
+        letter-spacing: 0;
+
+        .title {
+          .f_s_c_h(PingFangSC-Regular, 13px, #999, 18px);
+
+          margin-bottom: 3px;
+        }
+
+        .val {
+          .f_s_c_h(PingFangSC-Regular, 16px, #4a4a4a, 22px);
+
+          font-weight: bold;
+        }
+      }
+    }
+
+    .no_data {
+      font-family: PingFangSC-Light;
+      font-size: 15px;
+      line-height: 21px;
+      color: #999999;
+      letter-spacing: 0;
+
+      img {
+        .w_h(114px, 80px);
+
+        margin: 202px auto 14px;
+      }
+    }
+
+    .footer_tip {
+      // margin-top: -66px;
+      margin-top: -138px;
+      /* position: fixed;
+      right: 0;
+      bottom: 0;
+      left: 0; */
+      padding: 10px 26px 20px;
+      font-family: PingFangSC-Light;
+      font-size: 12px;
+      line-height: 18px;
+      color: #bcbcbc;
+      letter-spacing: 0;
+      background-color: #f7f8fa;
+      text-align: justify;
+    }
+  }
+
+  /* &.iphoneX {
+    .container .navigation-bar+.wrapper.fixed {
+      bottom: 91px;
+    }
+
+    .footer_tip {
+      padding-bottom: 45px;
+    }
+  } */
+}
+
+.navigation-bar.iphoneX .navigation-bar-wrap,
+.navigation-bar.iphoneXR .navigation-bar-wrap,
+.navigation-bar.iphoneXSMax .navigation-bar-wrap {
+  padding-top: 44px !important;
+}
+
+.navigation-bar.iphoneX+.wrapper.fixed,
+.navigation-bar.iphoneXR+.wrapper.fixed,
+.navigation-bar.iphoneXSMax+.wrapper.fixed {
+  top: 88px;
+}

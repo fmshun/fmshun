@@ -1,0 +1,65 @@
+.confirm_container {
+  .mask(rgba(0, 0, 0, .7));
+
+  .confirm_content {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: auto;
+    padding-top: 38px;
+    letter-spacing: 0;
+
+    .confirm_close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      padding: 10px;
+      margin: -10px;
+      .w_h(35px, 35px);
+    }
+
+    .confirm_title {
+      margin-bottom: 6px;
+      .f_s_c_h(PingFangSC-Regular, 17px, #323232, 24px);
+    }
+
+    .confirm_value {
+      margin-bottom: 25px;
+
+      .confirm_value_num {
+        margin-right: 5px;
+        .f_s_c_h(PingFangSC-Semibold, 38px, #000, 53px);
+      }
+
+      .confirm_value_per {
+        .f_s_c_h(PingFangSC-Regular, 14px, #323232, 20px);
+        position: relative;
+        top: -10px;
+      }
+    }
+
+    .confirm_bottom {
+      padding: 0 30px;
+      .f_s_c_h(PingFangSC-Regular, 14px, #999, 24px);
+
+      .confirm_bottom_name {
+        color: #323232;
+      }
+    }
+
+    .confirm_footer {
+      padding: 11px 0 10px;
+      margin: 30px 15px 20px;
+      background-color: #ff8300;
+      border-radius: 23px;
+      .f_s_c_h(PingFangSC-Regular, 18px, #fff, 25px);
+    }
+  }
+}
+
+.iphoneX {
+  .confirm_container .confirm_content .confirm_footer {
+    margin-bottom: 34px;
+  }
+}

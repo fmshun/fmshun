@@ -1,0 +1,76 @@
+.iphoneX .cycle_container .cycle_content {
+    padding-bottom: 34px;
+}
+
+.cycle_container {
+  .mask(rgba(0, 0, 0, 0.7));
+
+  .cycle_content {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 316px;
+    overflow: hidden;
+    background-color: #fff;
+
+    .title {
+      padding: 18px 20px;
+      background-color: #f8f9fd;
+      .f_s_c_h(PingFangSC-Regular, 17px, #323232, 24px);
+
+      .cycle_content_title {
+        margin-right: -15px;
+      }
+
+      .cycle_content_cancel,
+      .cycle_content_confirm {
+        .f_s_c_h(PingFangSC-Regular, 14px, #999, 20px);
+      }
+
+      .cycle_content_confirm {
+        color: #323232;
+      }
+    }
+
+    .cycle_swipers {
+      height: 256px;
+      padding: 28px 0;
+
+      .swiper-container {
+        position: relative;
+        width: 116px;
+
+        &::before {
+          .line(47px, 47px, #e0e0e0);
+
+          top: 51px;
+        }
+
+        &::after {
+          .line(47px, 47px, #e0e0e0);
+
+          top: 99px;
+        }
+
+        .swiper-wrapper {
+          margin-top: -25px;
+
+          .swiper-slide {
+            width: 116px;
+            height: 49px;
+            padding: 12px 0;
+            margin: 0 auto;
+            .f_s_c_h(PingFangSC-Regular, 19px, #c5c5c5, 26px);
+
+            &.swiper-slide-active {
+              position: relative;
+              color: #323232;
+              // &::before
+            }
+          }
+        }
+      }
+    }
+  }
+}

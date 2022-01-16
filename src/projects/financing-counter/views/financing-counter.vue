@@ -4,9 +4,7 @@
     <topHeader rightOp="常见问题" ref="header"></topHeader>
     <div class="main-content">
       <div class="content-title"></div>
-      <div class="little-title">
-        一键测算收益，让你的投资更加理性
-      </div>
+      <div class="little-title">一键测算收益，让你的投资更加理性</div>
       <!--基金框-->
       <div class="related-funds">
         <div class="line-title"></div>
@@ -21,7 +19,7 @@
             <span class="name-word">{{ productInfo.prdtName }}</span>
             <span
               class="fund-type"
-              style="height: 17px;font-size: 10px;line-height: 17px;"
+              style="height: 17px; font-size: 10px; line-height: 17px"
               v-show="productInfo.isHot"
             >
               热门
@@ -37,7 +35,7 @@
           <div class="period-money" @click="clickMoneyInput">
             <div class="money-number">
               <span
-                style="color: #abafb7;letter-spacing: 0;opacity: 0.7;"
+                style="color: #abafb7; letter-spacing: 0; opacity: 0.7"
                 v-show="moneyCount.length === 0"
               >
                 1.00～1,000,000.00元
@@ -67,7 +65,7 @@
               每月{{ cycle.rate + 1 }}号
             </div>
             <div class="period-word" v-else>
-              {{ cycle.periodName === '每日' ? '' : cycle.periodName
+              {{ cycle.periodName === "每日" ? "" : cycle.periodName
               }}{{ cycle.rateName }}
             </div>
             <div class="select-btn"></div>
@@ -80,11 +78,11 @@
               {{
                 startTime.year.name
                   ? startTime.year.name +
-                    '-' +
+                    "-" +
                     startTime.month.name +
-                    '-' +
+                    "-" +
                     startTime.day.name
-                  : ''
+                  : ""
               }}
             </div>
             <div class="select-btn"></div>
@@ -97,11 +95,11 @@
               {{
                 endTime.year.name
                   ? endTime.year.name +
-                    '-' +
+                    "-" +
                     endTime.month.name +
-                    '-' +
+                    "-" +
                     endTime.day.name
-                  : ''
+                  : ""
               }}
             </div>
             <div class="select-btn"></div>
@@ -195,69 +193,69 @@
 </template>
 
 <script>
-import base from 'base'
-import topHeader from '../components/top-header'
-import Cycle from '../components/Cycle.vue'
-import selectBox from '../components/select-box'
-import { getProductInfo } from '../request/api'
-import ajax from 'ajax'
-import file from 'file'
-import { setTimeout } from 'timers'
+import base from "base";
+import topHeader from "../components/top-header";
+import Cycle from "../components/Cycle.vue";
+import selectBox from "../components/select-box";
+import { getProductInfo } from "../request/api";
+import ajax from "ajax";
+import file from "file";
+import { setTimeout } from "timers";
 
 export default {
-  name: 'Main',
+  name: "Main",
   components: { topHeader, selectBox, Cycle },
   data() {
     return {
-      tipWord: '定投金额不能为空',
+      tipWord: "定投金额不能为空",
       loading: false,
       productInfo: {},
       titleIndex: 1,
       cycleBox: false,
       timeBox: false,
       showNumBox: false, //定投金额选择框控制
-      moneyCount: '', //定投金额
+      moneyCount: "", //定投金额
       cycle: {
         period: 0,
         rate: 0,
-        periodName: '',
-        rateName: '',
+        periodName: "",
+        rateName: "",
       },
       dateMaxMin: {
-        min: '',
-        max: '',
+        min: "",
+        max: "",
       },
       dateInfos: {},
       endDateInfos: {},
       startTime: {
         year: {
           index: null,
-          name: '',
+          name: "",
         },
         month: {
           index: null,
-          name: '',
+          name: "",
         },
         day: {
           index: null,
-          name: '',
+          name: "",
         },
       },
       endTime: {
         year: {
           index: null,
-          name: '',
+          name: "",
         },
         month: {
           index: null,
-          name: '',
+          name: "",
         },
         day: {
           index: null,
-          name: '',
+          name: "",
         },
       },
-    }
+    };
   },
   methods: {
     //日期处理
@@ -266,28 +264,28 @@ export default {
       this.dateMaxMin = {
         min: start,
         max: end,
-      }
+      };
       //基金成立日范围,最长不能超出5年
       let startY = Number(start.substring(0, 4)),
         startM = Number(start.substring(4, 6)),
-        startD = Number(start.substring(6, 8))
+        startD = Number(start.substring(6, 8));
       let endY = Number(end.substring(0, 4)),
         endM = Number(end.substring(4, 6)),
-        endD = Number(end.substring(6, 8))
+        endD = Number(end.substring(6, 8));
 
       for (let k = startY; k <= endY; k++) {
-        dateRange.years.push(k.toString())
+        dateRange.years.push(k.toString());
 
         let monthArr = [],
-          acceptArr = []
+          acceptArr = [];
         //年份限制
         for (
           let i = k === startY ? startM : 1;
           i <= (k === endY ? endM : 12);
           i++
         ) {
-          monthArr.push(i < 10 ? '0' + i : i.toString())
-          let dayArr = []
+          monthArr.push(i < 10 ? "0" + i : i.toString());
+          let dayArr = [];
           //月份日限制
           if (k % 4 === 0 && i === 2) {
             //能整除4的2月份29天
@@ -296,9 +294,9 @@ export default {
               o <= (k === endY && i === endM ? endD : 29);
               o++
             ) {
-              dayArr.push(o < 10 ? '0' + o : o.toString())
+              dayArr.push(o < 10 ? "0" + o : o.toString());
             }
-            acceptArr.push(dayArr)
+            acceptArr.push(dayArr);
           } else if (i === 2) {
             //否则2月份28天
             for (
@@ -306,9 +304,9 @@ export default {
               o <= (k === endY && i === endM ? endD : 28);
               o++
             ) {
-              dayArr.push(o < 10 ? '0' + o : o.toString())
+              dayArr.push(o < 10 ? "0" + o : o.toString());
             }
-            acceptArr.push(dayArr)
+            acceptArr.push(dayArr);
           } else if (i === 4 || i === 6 || i === 9 || i === 11) {
             //4,6,9,11月份30天
             for (
@@ -316,9 +314,9 @@ export default {
               o <= (k === endY && i === endM ? endD : 30);
               o++
             ) {
-              dayArr.push(o < 10 ? '0' + o : o.toString())
+              dayArr.push(o < 10 ? "0" + o : o.toString());
             }
-            acceptArr.push(dayArr)
+            acceptArr.push(dayArr);
           } else {
             //1,3,5,7,8,10,12月份31天
             for (
@@ -326,121 +324,124 @@ export default {
               o <= (k === endY && i === endM ? endD : 31);
               o++
             ) {
-              dayArr.push(o < 10 ? '0' + o : o.toString())
+              dayArr.push(o < 10 ? "0" + o : o.toString());
             }
-            acceptArr.push(dayArr)
+            acceptArr.push(dayArr);
           }
         }
-        dateRange.months.push(monthArr)
-        dateRange.days.push(acceptArr)
+        dateRange.months.push(monthArr);
+        dateRange.days.push(acceptArr);
       }
 
       //赋值索引,索引一直在变
-      objTime.year.index = dateRange.years.indexOf(objTime.year.name)
+      objTime.year.index = dateRange.years.indexOf(objTime.year.name);
       objTime.month.index = dateRange.months[objTime.year.index].indexOf(
         objTime.month.name
-      )
+      );
       objTime.day.index = dateRange.days[objTime.year.index][
         objTime.month.index
-      ].indexOf(objTime.day.name)
+      ].indexOf(objTime.day.name);
 
       //展示时间选择控件
-      this.timeBox = true
+      this.timeBox = true;
     },
     //获取产品详情
     getProductInfo(data) {
-      let param = {}
+      let param = {};
       if (data) {
         param = {
           prdtId: data,
-        }
+        };
       } else {
         param = {
-          prdtId: base.getUrlParameter('prdtId') || '',
-        }
+          prdtId: base.getUrlParameter("prdtId") || "",
+        };
       }
 
       getProductInfo(param).then((data) => {
-        $('.loader-wrapper').hide() //关闭加载动画
-        let result = data.BINDATA ? JSON.parse(data.BINDATA) : {}
-        let code = result.code
-        let msg = result.msg
-        base.log(result)
-        if (code === '0') {
-          this.productInfo = result.resultData
+        $(".loader-wrapper").hide(); //关闭加载动画
+        let result = data.BINDATA ? JSON.parse(data.BINDATA) : {};
+        let code = result.code;
+        let msg = result.msg;
+        base.log(result);
+        if (code === "0") {
+          this.productInfo = result.resultData;
 
           //设置默认选项
-          this.showNumBox = false
-          this.moneyCount = '1000.00'
+          this.showNumBox = false;
+          this.moneyCount = "1000.00";
           this.cycle = {
             period: 1,
             rate: 0,
-            periodName: '每周',
-            rateName: '周一',
-          }
-          $('.btn-eve')
+            periodName: "每周",
+            rateName: "周一",
+          };
+          $(".btn-eve")
             .eq(this.cycle.period)
-            .addClass('active')
+            .addClass("active")
             .siblings()
-            .removeClass('active')
+            .removeClass("active");
 
           //起投时间取接口默认值
-          this.startTime.year.name = this.productInfo.startDate.substring(0, 4)
-          this.startTime.month.name = this.productInfo.startDate.substring(4, 6)
-          this.startTime.day.name = this.productInfo.startDate.substring(6, 8)
+          this.startTime.year.name = this.productInfo.startDate.substring(0, 4);
+          this.startTime.month.name = this.productInfo.startDate.substring(
+            4,
+            6
+          );
+          this.startTime.day.name = this.productInfo.startDate.substring(6, 8);
 
           //结束时间设置默认值
-          this.endTime.year.name = this.productInfo.endDate.substring(0, 4)
-          this.endTime.month.name = this.productInfo.endDate.substring(4, 6)
-          this.endTime.day.name = this.productInfo.endDate.substring(6, 8)
+          this.endTime.year.name = this.productInfo.endDate.substring(0, 4);
+          this.endTime.month.name = this.productInfo.endDate.substring(4, 6);
+          this.endTime.day.name = this.productInfo.endDate.substring(6, 8);
         } else {
-          alert('对不起，计算器开了个小差～')
+          alert("对不起，计算器开了个小差～");
         }
-      })
+      });
     },
     //去基金搜索页面
     GoFinanceSearch() {
       let url =
-        'http://action:10061/?fullscreen=1&&shownavigationbar=0&&isShowDarkStatusBar=1&&url=/web_cft/financing-aip/financing-search.html'
-      file.deleteAll('prdtId.js', () => {
-        base.href(url)
-      })
+        "http://action:10061/?fullscreen=1&&shownavigationbar=0&&isShowDarkStatusBar=1&&url=/web_cft/financing-aip/financing-search.html";
+      file.deleteAll("prdtId.js", () => {
+        base.href(url);
+      });
     },
     //定投金额输入
     clickMoneyInput() {
-      this.showNumBox = true
-      $('#keyboard').slideDown(260)
+      this.showNumBox = true;
+      $("#keyboard").slideDown(260);
     },
     moneyInputClose() {
-      this.confirm()
+      this.confirm();
     },
     confirm() {
-      this.showNumBox = false
-      $('#keyboard').slideUp(260)
+      this.showNumBox = false;
+      $("#keyboard").slideUp(260);
       window.TalkingData.onHTSCEvent(
-        'click',
-        'leaf1254',
-        '1.0',
-        '理财_基金定投|定投计算器主页|底部|当前主入口按钮',
-        'enter_main={确认}'
-      )
+        "click",
+        "leaf1254",
+        "1.0",
+        "理财_基金定投|定投计算器主页|底部|当前主入口按钮",
+        "enter_main={确认}"
+      );
       //最大不能超过一百万
       if (Number(this.moneyCount) > 1000000) {
-        this.moneyCount = '1000000'
+        this.moneyCount = "1000000";
       }
       //最小为1.00
       if (Number(this.moneyCount) < 1) {
-        this.moneyCount = '1.00'
+        this.moneyCount = "1.00";
       }
 
       //去除前面的0,和小数点补填
-      this.moneyCount = Number(this.moneyCount).toString()
-      let arr = this.moneyCount.split('.')
+      this.moneyCount = Number(this.moneyCount).toString();
+      let arr = this.moneyCount.split(".");
       if (arr[1] && arr[1].length === 1) {
-        this.moneyCount = this.moneyCount + '0'
+        this.moneyCount = this.moneyCount + "0";
       }
       if (!arr[1]) {
-        this.moneyCount = this.moneyCount + '.00'
+        this.moneyCount = this.moneyCount + ".00";
       }
     },
 
@@ -450,13 +451,13 @@ export default {
     showCycleBox() {
       //判断定投金额键盘
       if (this.showNumBox) {
-        return
+        return;
       }
 
-      this.cycleBox = true
+      this.cycleBox = true;
     },
     cycleClose() {
-      this.cycleBox = false
+      this.cycleBox = false;
     },
     /**
      * 获取定投日期所选数字
@@ -468,408 +469,368 @@ export default {
         rate.index !== this.cycle.rate
       ) {
         //起投时间取接口默认值,重置
-        this.startTime.year.name = this.productInfo.startDate.substring(0, 4)
-        this.startTime.month.name = this.productInfo.startDate.substring(4, 6)
-        this.startTime.day.name = this.productInfo.startDate.substring(6, 8)
+        this.startTime.year.name = this.productInfo.startDate.substring(0, 4);
+        this.startTime.month.name = this.productInfo.startDate.substring(4, 6);
+        this.startTime.day.name = this.productInfo.startDate.substring(6, 8);
 
         //结束时间默认值
-        this.endTime.year.name = this.productInfo.endDate.substring(0, 4)
-        this.endTime.month.name = this.productInfo.endDate.substring(4, 6)
-        this.endTime.day.name = this.productInfo.endDate.substring(6, 8)
+        this.endTime.year.name = this.productInfo.endDate.substring(0, 4);
+        this.endTime.month.name = this.productInfo.endDate.substring(4, 6);
+        this.endTime.day.name = this.productInfo.endDate.substring(6, 8);
       }
 
-      $('.btn-eve')
+      $(".btn-eve")
         .eq(period.index)
-        .addClass('active')
+        .addClass("active")
         .siblings()
-        .removeClass('active')
-      this.cycle.period = period.index
-      this.cycle.rate = rate.index
-      this.cycle.periodName = period.name
-      this.cycle.rateName = rate.name
-      this.cycleBox = false
+        .removeClass("active");
+      this.cycle.period = period.index;
+      this.cycle.rate = rate.index;
+      this.cycle.periodName = period.name;
+      this.cycle.rateName = rate.name;
+      this.cycleBox = false;
     },
     //日期转换
     switchDateForm(date) {
-      let y = date.getFullYear()
-      let m = date.getMonth() + 1 //获取当前月份的日子
-      let d = date.getDate()
+      let y = date.getFullYear();
+      let m = date.getMonth() + 1; //获取当前月份的日子
+      let d = date.getDate();
       if (m < 10) {
-        m = '0' + m
+        m = "0" + m;
       }
       if (d < 10) {
-        d = '0' + d
+        d = "0" + d;
       }
-      return `${y}${m}${d}`
+      return `${y}${m}${d}`;
     },
     /*定投时间选择*/
     selectBoxShow(index) {
       //判断定投金额键盘
       if (this.showNumBox) {
-        return
+        return;
       }
 
-      this.titleIndex = index
+      this.titleIndex = index;
 
       //以服务器当天时间为准
       let currentT = new Date(
         this.productInfo.endDate.substring(0, 4) +
-          '-' +
+          "-" +
           this.productInfo.endDate.substring(4, 6) +
-          '-' +
+          "-" +
           this.productInfo.endDate.substring(6, 8)
-      )
+      );
       //确定起投时间和结束时间的区间
       if (index === 1) {
         this.dateInfos = {
           years: [],
           months: [],
           days: [],
-        }
+        };
         //定投周期判断
         if (this.cycle.period === 0) {
           //周期为每日,上一个交易日作为起投时间的最大值
-          let url5825 = `/reqxml?action=27401&path=/forward?funcId=020157&next=-1&day=${this.productInfo.endDate}`
-          ajax.run(url5825, '', (xml) => {
-            let data = xml.BINDATA
-            let code = $(data)
-              .find('code')
-              .text()
-            let msg = $(data)
-              .find('msg')
-              .text()
-            if (code === '0') {
-              base.log(
-                $(data)
-                  .find('transDay')
-                  .text()
-              )
+          let url5825 = `/reqxml?action=27401&path=/forward?funcId=020157&next=-1&day=${this.productInfo.endDate}`;
+          ajax.run(url5825, "", (xml) => {
+            let data = xml.BINDATA;
+            let code = $(data).find("code").text();
+            let msg = $(data).find("msg").text();
+            if (code === "0") {
+              base.log($(data).find("transDay").text());
               this.dateHandle(
                 this.productInfo.openDate,
-                $(data)
-                  .find('transDay')
-                  .text(),
+                $(data).find("transDay").text(),
                 this.dateInfos,
                 this.startTime,
                 true
-              )
+              );
             } else {
-              alert('对不起，计算器开了个小差～')
+              alert("对不起，计算器开了个小差～");
             }
-          })
+          });
         } else if (this.cycle.period === 1) {
           //周期为每周
           let gapD,
             investD,
             date2,
             nextDay,
-            maxDate = '',
-            gap = 0
+            maxDate = "",
+            gap = 0;
           if (this.cycle.rate + 1 < currentT.getDay()) {
             //周期对应日期小于当天
-            gapD = currentT.getDay() - (this.cycle.rate + 1)
+            gapD = currentT.getDay() - (this.cycle.rate + 1);
             investD = this.switchDateForm(
               new Date(currentT.getTime() - gapD * 24 * 3600 * 1000)
-            ) //周期对应的日期20200914格式
+            ); //周期对应的日期20200914格式
             date2 = new Date(
               investD.substring(0, 4) +
-                '-' +
+                "-" +
                 investD.substring(4, 6) +
-                '-' +
+                "-" +
                 investD.substring(6, 8)
-            ) //2020-09-14格式
+            ); //2020-09-14格式
             nextDay = this.switchDateForm(
               new Date(
                 currentT.getTime() - gapD * 24 * 3600 * 1000 + 24 * 3600 * 1000
               )
-            ) //周期对应的日期 加一天
+            ); //周期对应的日期 加一天
           } else {
             //周期对应日期大于等于当天
-            gapD = this.cycle.rate + 1 - currentT.getDay()
+            gapD = this.cycle.rate + 1 - currentT.getDay();
             investD = this.switchDateForm(
               new Date(currentT.getTime() + (gapD - 7) * 24 * 3600 * 1000)
-            ) //最近的一个定投日期
+            ); //最近的一个定投日期
             date2 = new Date(
               investD.substring(0, 4) +
-                '-' +
+                "-" +
                 investD.substring(4, 6) +
-                '-' +
+                "-" +
                 investD.substring(6, 8)
-            ) //2020-09-14格式
+            ); //2020-09-14格式
             nextDay = this.switchDateForm(
               new Date(currentT.getTime() + (gapD - 7 + 1) * 24 * 3600 * 1000)
-            ) //周期对应的日期 加一天
+            ); //周期对应的日期 加一天
           }
 
           //判断对应的日期是否是交易日,只能调用上一个交易日的接口
           const judgeTradeDay = (judgedate, currentP) => {
-            let url5825 = `/reqxml?action=27401&path=/forward?funcId=020157&next=-1&day=${judgedate}`
-            ajax.run(url5825, '', (xml) => {
-              let data = xml.BINDATA
-              let code = $(data)
-                .find('code')
-                .text()
-              let msg = $(data)
-                .find('msg')
-                .text()
-              if (code === '0') {
-                if (
-                  $(data)
-                    .find('transDay')
-                    .text() == currentP
-                ) {
-                  maxDate = $(data)
-                    .find('transDay')
-                    .text()
-                  base.log(maxDate)
+            let url5825 = `/reqxml?action=27401&path=/forward?funcId=020157&next=-1&day=${judgedate}`;
+            ajax.run(url5825, "", (xml) => {
+              let data = xml.BINDATA;
+              let code = $(data).find("code").text();
+              let msg = $(data).find("msg").text();
+              if (code === "0") {
+                if ($(data).find("transDay").text() == currentP) {
+                  maxDate = $(data).find("transDay").text();
+                  base.log(maxDate);
                   this.dateHandle(
                     this.productInfo.openDate,
                     maxDate,
                     this.dateInfos,
                     this.startTime,
                     true
-                  )
+                  );
                 } else {
-                  gap = gap + 7
+                  gap = gap + 7;
                   let lastP = this.switchDateForm(
                     new Date(date2.getTime() - gap * 24 * 3600 * 1000)
-                  ) //上一个周期对应的日期
+                  ); //上一个周期对应的日期
                   let nextlastP = this.switchDateForm(
                     new Date(
                       date2.getTime() -
                         gap * 24 * 3600 * 1000 +
                         24 * 3600 * 1000
                     )
-                  ) //上一个周期对应的日期 加一天
-                  judgeTradeDay(nextlastP, lastP)
+                  ); //上一个周期对应的日期 加一天
+                  judgeTradeDay(nextlastP, lastP);
                 }
               } else {
-                alert('对不起，计算器开了个小差～')
+                alert("对不起，计算器开了个小差～");
               }
-            })
-          }
-          judgeTradeDay(nextDay, investD)
+            });
+          };
+          judgeTradeDay(nextDay, investD);
         } else if (this.cycle.period === 2) {
           //定投周期为每两周
           let gapD,
             investD,
             date2,
             nextDay,
-            maxDate = '',
-            gap = 0
+            maxDate = "",
+            gap = 0;
           if (this.cycle.rate + 1 < currentT.getDay()) {
             //周期对应日期小于当天
-            gapD = currentT.getDay() - (this.cycle.rate + 1)
+            gapD = currentT.getDay() - (this.cycle.rate + 1);
             investD = this.switchDateForm(
               new Date(currentT.getTime() - gapD * 24 * 3600 * 1000)
-            ) //周期对应的日期20200914格式
+            ); //周期对应的日期20200914格式
             date2 = new Date(
               investD.substring(0, 4) +
-                '-' +
+                "-" +
                 investD.substring(4, 6) +
-                '-' +
+                "-" +
                 investD.substring(6, 8)
-            ) //2020-09-14格式
+            ); //2020-09-14格式
             nextDay = this.switchDateForm(
               new Date(
                 currentT.getTime() - gapD * 24 * 3600 * 1000 + 24 * 3600 * 1000
               )
-            ) //周期对应的日期 加一天
+            ); //周期对应的日期 加一天
           } else {
             //周期对应日期大于等于当天
-            gapD = this.cycle.rate + 1 - currentT.getDay()
+            gapD = this.cycle.rate + 1 - currentT.getDay();
             investD = this.switchDateForm(
               new Date(currentT.getTime() + (gapD - 14) * 24 * 3600 * 1000)
-            ) //最近的一个定投日期
+            ); //最近的一个定投日期
             date2 = new Date(
               investD.substring(0, 4) +
-                '-' +
+                "-" +
                 investD.substring(4, 6) +
-                '-' +
+                "-" +
                 investD.substring(6, 8)
-            ) //2020-09-14格式
+            ); //2020-09-14格式
             nextDay = this.switchDateForm(
               new Date(currentT.getTime() + (gapD - 14 + 1) * 24 * 3600 * 1000)
-            ) //周期对应的日期 加一天
+            ); //周期对应的日期 加一天
           }
 
           //判断对应的日期是否是交易日,只能调用上一个交易日的接口
           const judgeTradeDay = (judgedate, currentP) => {
-            let url5825 = `/reqxml?action=27401&path=/forward?funcId=020157&next=-1&day=${judgedate}`
-            ajax.run(url5825, '', (xml) => {
-              let data = xml.BINDATA
-              let code = $(data)
-                .find('code')
-                .text()
-              let msg = $(data)
-                .find('msg')
-                .text()
-              if (code === '0') {
-                if (
-                  $(data)
-                    .find('transDay')
-                    .text() == currentP
-                ) {
-                  maxDate = $(data)
-                    .find('transDay')
-                    .text()
-                  base.log(maxDate)
+            let url5825 = `/reqxml?action=27401&path=/forward?funcId=020157&next=-1&day=${judgedate}`;
+            ajax.run(url5825, "", (xml) => {
+              let data = xml.BINDATA;
+              let code = $(data).find("code").text();
+              let msg = $(data).find("msg").text();
+              if (code === "0") {
+                if ($(data).find("transDay").text() == currentP) {
+                  maxDate = $(data).find("transDay").text();
+                  base.log(maxDate);
                   this.dateHandle(
                     this.productInfo.openDate,
                     maxDate,
                     this.dateInfos,
                     this.startTime,
                     true
-                  )
+                  );
                 } else {
-                  gap = gap + 14
+                  gap = gap + 14;
                   let lastP = this.switchDateForm(
                     new Date(date2.getTime() - gap * 24 * 3600 * 1000)
-                  ) //上一个周期对应的日期
+                  ); //上一个周期对应的日期
                   let nextlastP = this.switchDateForm(
                     new Date(
                       date2.getTime() -
                         gap * 24 * 3600 * 1000 +
                         24 * 3600 * 1000
                     )
-                  ) //上一个周期对应的日期 加一天
-                  judgeTradeDay(nextlastP, lastP)
+                  ); //上一个周期对应的日期 加一天
+                  judgeTradeDay(nextlastP, lastP);
                 }
               } else {
-                alert('对不起，计算器开了个小差～')
+                alert("对不起，计算器开了个小差～");
               }
-            })
-          }
-          judgeTradeDay(nextDay, investD)
+            });
+          };
+          judgeTradeDay(nextDay, investD);
         } else if (this.cycle.period === 3) {
           //定投周期为每月
           let gapD,
             investD,
             date2,
             nextDay,
-            maxDate = ''
+            maxDate = "";
           if (this.cycle.rate + 1 < currentT.getDate()) {
             //周期对应日期小于当天
-            gapD = currentT.getDate() - (this.cycle.rate + 1)
+            gapD = currentT.getDate() - (this.cycle.rate + 1);
             investD = this.switchDateForm(
               new Date(currentT.getTime() - gapD * 24 * 3600 * 1000)
-            ) //周期对应的日期20200914格式
+            ); //周期对应的日期20200914格式
             date2 = new Date(
               investD.substring(0, 4) +
-                '-' +
+                "-" +
                 investD.substring(4, 6) +
-                '-' +
+                "-" +
                 investD.substring(6, 8)
-            ) //2020-09-14格式
+            ); //2020-09-14格式
             nextDay = this.switchDateForm(
               new Date(
                 currentT.getTime() - gapD * 24 * 3600 * 1000 + 24 * 3600 * 1000
               )
-            ) //周期对应的日期 加一天
+            ); //周期对应的日期 加一天
           } else {
             //周期对应日期大于等于当天
             let currentY = currentT.getFullYear(),
-              currentM = currentT.getMonth() + 1
-            let m = currentM - 1 < 10 ? '0' + (currentM - 1) : currentM - 1
+              currentM = currentT.getMonth() + 1;
+            let m = currentM - 1 < 10 ? "0" + (currentM - 1) : currentM - 1;
             let d =
               this.cycle.rate + 1 < 10
-                ? '0' + (this.cycle.rate + 1)
-                : this.cycle.rate + 1
+                ? "0" + (this.cycle.rate + 1)
+                : this.cycle.rate + 1;
             if (currentM - 1 === 0) {
-              investD = `${currentY - 1}12${d}`
+              investD = `${currentY - 1}12${d}`;
             } else {
-              investD = `${currentY}${m}${d}` //最近的一个定投日期
+              investD = `${currentY}${m}${d}`; //最近的一个定投日期
             }
             date2 = new Date(
               investD.substring(0, 4) +
-                '-' +
+                "-" +
                 investD.substring(4, 6) +
-                '-' +
+                "-" +
                 investD.substring(6, 8)
-            ) //2020-09-14格式
+            ); //2020-09-14格式
             nextDay = this.switchDateForm(
               new Date(date2.getTime() + 24 * 3600 * 1000)
-            ) //周期对应的日期 加一天
+            ); //周期对应的日期 加一天
           }
 
           //判断对应的日期是否是交易日,只能调用上一个交易日的接口
           const judgeTradeDay = (judgedate, currentP) => {
-            let url5825 = `/reqxml?action=27401&path=/forward?funcId=020157&next=-1&day=${judgedate}`
-            ajax.run(url5825, '', (xml) => {
-              let data = xml.BINDATA
-              let code = $(data)
-                .find('code')
-                .text()
-              let msg = $(data)
-                .find('msg')
-                .text()
-              if (code === '0') {
-                if (
-                  $(data)
-                    .find('transDay')
-                    .text() == currentP
-                ) {
-                  maxDate = $(data)
-                    .find('transDay')
-                    .text()
-                  base.log(maxDate)
+            let url5825 = `/reqxml?action=27401&path=/forward?funcId=020157&next=-1&day=${judgedate}`;
+            ajax.run(url5825, "", (xml) => {
+              let data = xml.BINDATA;
+              let code = $(data).find("code").text();
+              let msg = $(data).find("msg").text();
+              if (code === "0") {
+                if ($(data).find("transDay").text() == currentP) {
+                  maxDate = $(data).find("transDay").text();
+                  base.log(maxDate);
                   this.dateHandle(
                     this.productInfo.openDate,
                     maxDate,
                     this.dateInfos,
                     this.startTime,
                     true
-                  )
+                  );
                 } else {
                   //再往上推一个月
                   let y2 = date2.getFullYear(),
-                    m2 = date2.getMonth() + 1
-                  let m = m2 - 1 < 10 ? '0' + (m2 - 1) : m2 - 1
+                    m2 = date2.getMonth() + 1;
+                  let m = m2 - 1 < 10 ? "0" + (m2 - 1) : m2 - 1;
                   let d =
                     this.cycle.rate + 1 < 10
-                      ? '0' + (this.cycle.rate + 1)
-                      : this.cycle.rate + 1
+                      ? "0" + (this.cycle.rate + 1)
+                      : this.cycle.rate + 1;
                   if (m2 - 1 === 0) {
-                    investD = `${y2 - 1}12${d}`
+                    investD = `${y2 - 1}12${d}`;
                   } else {
-                    investD = `${y2}${m}${d}` //最近的一个定投日期
+                    investD = `${y2}${m}${d}`; //最近的一个定投日期
                   }
                   date2 = new Date(
                     investD.substring(0, 4) +
-                      '-' +
+                      "-" +
                       investD.substring(4, 6) +
-                      '-' +
+                      "-" +
                       investD.substring(6, 8)
-                  ) //2020-09-14格式
+                  ); //2020-09-14格式
                   nextDay = this.switchDateForm(
                     new Date(date2.getTime() + 24 * 3600 * 1000)
-                  ) //周期对应的日期 加一天
-                  judgeTradeDay(nextDay, investD)
+                  ); //周期对应的日期 加一天
+                  judgeTradeDay(nextDay, investD);
                 }
               } else {
-                alert('对不起，计算器开了个小差～')
+                alert("对不起，计算器开了个小差～");
               }
-            })
-          }
-          judgeTradeDay(nextDay, investD)
+            });
+          };
+          judgeTradeDay(nextDay, investD);
         }
       } else {
         this.endDateInfos = {
           years: [],
           months: [],
           days: [],
-        }
-        let startR = `${this.startTime.year.name}${this.startTime.month.name}${this.startTime.day.name}`
+        };
+        let startR = `${this.startTime.year.name}${this.startTime.month.name}${this.startTime.day.name}`;
         this.dateHandle(
           startR,
           this.productInfo.endDate,
           this.endDateInfos,
           this.endTime
-        )
+        );
       }
     },
     timeBoxClose() {
-      this.timeBox = false
+      this.timeBox = false;
     },
     /*获取定投时间所选结果*/
     getTimeSelected(year, month, day) {
@@ -881,24 +842,24 @@ export default {
           this.startTime.month.index !== month.index ||
           this.startTime.day.index !== day.index
         ) {
-          let s = `${year.name}-${month.name}-${day.name}`
-          let e = `${this.endTime.year.name}-${this.endTime.month.name}-${this.endTime.day.name}`
+          let s = `${year.name}-${month.name}-${day.name}`;
+          let e = `${this.endTime.year.name}-${this.endTime.month.name}-${this.endTime.day.name}`;
           if (s > e) {
             //结束时间重置默认值
-            this.endTime.year.name = this.productInfo.endDate.substring(0, 4)
-            this.endTime.month.name = this.productInfo.endDate.substring(4, 6)
-            this.endTime.day.name = this.productInfo.endDate.substring(6, 8)
+            this.endTime.year.name = this.productInfo.endDate.substring(0, 4);
+            this.endTime.month.name = this.productInfo.endDate.substring(4, 6);
+            this.endTime.day.name = this.productInfo.endDate.substring(6, 8);
           }
         }
-        this.startTime.year = year
-        this.startTime.month = month
-        this.startTime.day = day
+        this.startTime.year = year;
+        this.startTime.month = month;
+        this.startTime.day = day;
       } else {
-        this.endTime.year = year
-        this.endTime.month = month
-        this.endTime.day = day
+        this.endTime.year = year;
+        this.endTime.month = month;
+        this.endTime.day = day;
       }
-      this.timeBox = false
+      this.timeBox = false;
     },
     /**
      * 一键算收益
@@ -906,151 +867,151 @@ export default {
      */
     goCalculate() {
       window.TalkingData.onHTSCEvent(
-        'click',
-        'leaf1254',
-        '1.0',
-        '理财_基金定投|定投计算器主页|底部|当前主入口按钮',
-        'enter_main={一键算收益}'
-      )
+        "click",
+        "leaf1254",
+        "1.0",
+        "理财_基金定投|定投计算器主页|底部|当前主入口按钮",
+        "enter_main={一键算收益}"
+      );
       //定投金额不能为空
       if (!this.moneyCount) {
-        $('.no-empty-tooltip').fadeIn()
+        $(".no-empty-tooltip").fadeIn();
         setTimeout(() => {
-          $('.no-empty-tooltip').fadeOut()
-        }, 2000)
-        return
+          $(".no-empty-tooltip").fadeOut();
+        }, 2000);
+        return;
       }
-      let self = this
+      let self = this;
       let param = {
         prdtId: this.productInfo.prdtId,
         startDate: `${this.startTime.year.name}${this.startTime.month.name}${this.startTime.day.name}`,
         endDate: `${this.endTime.year.name}${this.endTime.month.name}${this.endTime.day.name}`,
-        periodType: (function() {
+        periodType: (function () {
           if (self.cycle.period === 0) {
-            return ''
+            return "";
           } else if (self.cycle.period === 1) {
-            return 'W'
+            return "W";
           } else if (self.cycle.period === 2) {
-            return 'D'
+            return "D";
           } else if (self.cycle.period === 3) {
-            return 'M'
+            return "M";
           }
         })(),
         amount: this.moneyCount,
-        aipDay: this.cycle.period === 0 ? '' : (this.cycle.rate + 1).toString(),
-      }
+        aipDay: this.cycle.period === 0 ? "" : (this.cycle.rate + 1).toString(),
+      };
       //起投时间不能大于结束时间
       if (param.startDate > param.endDate) {
-        $('.time-tooltip').fadeIn()
+        $(".time-tooltip").fadeIn();
         setTimeout(() => {
-          $('.time-tooltip').fadeOut()
-        }, 2000)
-        return
+          $(".time-tooltip").fadeOut();
+        }, 2000);
+        return;
       }
-      file.deleteAll('prdtId.js', () => {
+      file.deleteAll("prdtId.js", () => {
         //去计算器计算结果页
         base.href(
           `http://action:10061/?fullscreen=1&&shownavigationbar=0&&url=/web_cft/financing-aip/calculate-result.html?prdtId=${param.prdtId}&aipDay=${param.aipDay}&periodType=${param.periodType}&amount=${param.amount}&startDate=${param.startDate}&endDate=${param.endDate}`
-        )
-      })
+        );
+      });
     },
   },
   mounted() {
-    let self = this
+    let self = this;
     this.$nextTick(() => {
-      self.getProductInfo()
+      self.getProductInfo();
       //定投金额键盘点击事件
-      $('.board-ul').click(function(e) {
-        if ($(e.target).text() === '确认') {
-          if ($('.confirm').hasClass('disabled')) {
-            return
+      $(".board-ul").click(function (e) {
+        if ($(e.target).text() === "确认") {
+          if ($(".confirm").hasClass("disabled")) {
+            return;
           }
-          self.confirm()
+          self.confirm();
         } else if (!$(e.target).text()) {
           //清除
           self.moneyCount = self.moneyCount.substring(
             0,
             self.moneyCount.length - 1
-          )
+          );
         } else {
           //---防止小数点重复
-          if (self.moneyCount.indexOf('.') > -1 && $(e.target).text() === '.') {
-            return
+          if (self.moneyCount.indexOf(".") > -1 && $(e.target).text() === ".") {
+            return;
           }
           //只能选填到小数点后两位
           if (
-            self.moneyCount.indexOf('.') > -1 &&
-            self.moneyCount.substr(self.moneyCount.indexOf('.') + 1).length ===
+            self.moneyCount.indexOf(".") > -1 &&
+            self.moneyCount.substr(self.moneyCount.indexOf(".") + 1).length ===
               2
           ) {
-            return
+            return;
           }
 
           //最大不能超过100万
           if (Number(self.moneyCount) > 1000000) {
-            return
+            return;
           }
 
-          self.moneyCount = self.moneyCount + $(e.target).text()
+          self.moneyCount = self.moneyCount + $(e.target).text();
         }
-      })
+      });
 
       //定投周期选择
-      $('.btn-eve').click(function(e) {
+      $(".btn-eve").click(function (e) {
         if (self.cycle.period !== $(this).index()) {
           //起投时间取接口默认值,必须重置
-          self.startTime.year.name = self.productInfo.startDate.substring(0, 4)
-          self.startTime.month.name = self.productInfo.startDate.substring(4, 6)
-          self.startTime.day.name = self.productInfo.startDate.substring(6, 8)
+          self.startTime.year.name = self.productInfo.startDate.substring(0, 4);
+          self.startTime.month.name = self.productInfo.startDate.substring(
+            4,
+            6
+          );
+          self.startTime.day.name = self.productInfo.startDate.substring(6, 8);
           //结束时间默认值
-          self.endTime.year.name = self.productInfo.endDate.substring(0, 4)
-          self.endTime.month.name = self.productInfo.endDate.substring(4, 6)
-          self.endTime.day.name = self.productInfo.endDate.substring(6, 8)
+          self.endTime.year.name = self.productInfo.endDate.substring(0, 4);
+          self.endTime.month.name = self.productInfo.endDate.substring(4, 6);
+          self.endTime.day.name = self.productInfo.endDate.substring(6, 8);
 
-          self.cycle.period = $(this).index()
-          self.cycle.rate = 0
+          self.cycle.period = $(this).index();
+          self.cycle.rate = 0;
           if (self.cycle.period === 0) {
-            self.cycle.periodName = '每日'
-            self.cycle.rateName = '每个交易日'
+            self.cycle.periodName = "每日";
+            self.cycle.rateName = "每个交易日";
           } else if (self.cycle.period === 1) {
-            self.cycle.periodName = '每周'
-            self.cycle.rateName = '周一'
+            self.cycle.periodName = "每周";
+            self.cycle.rateName = "周一";
           } else if (self.cycle.period === 2) {
-            self.cycle.periodName = '每两周'
-            self.cycle.rateName = '周一'
+            self.cycle.periodName = "每两周";
+            self.cycle.rateName = "周一";
           } else if (self.cycle.period === 3) {
-            self.cycle.periodName = '每月'
-            self.cycle.rateName = '01'
+            self.cycle.periodName = "每月";
+            self.cycle.rateName = "01";
           }
 
-          $(this)
-            .addClass('active')
-            .siblings()
-            .removeClass('active')
+          $(this).addClass("active").siblings().removeClass("active");
         }
-      })
-    })
+      });
+    });
 
     //页面返回事件
-    window.GoBackOnLoad = function() {
-      file.getFileData('prdtId.js', (res) => {
+    window.GoBackOnLoad = function () {
+      file.getFileData("prdtId.js", (res) => {
         if (res && res.prdtId) {
-          $('.loader-wrapper').show() //加载动画
-          self.getProductInfo(res.prdtId)
+          $(".loader-wrapper").show(); //加载动画
+          self.getProductInfo(res.prdtId);
         }
-      })
-    }
-    setTimeout(function() {
+      });
+    };
+    setTimeout(function () {
       window.TalkingData.onHTSCEvent(
-        'page',
-        'leaf1254',
-        '1.0',
-        '理财_基金定投|定投计算器主页|0|0',
-        ''
-      )
-    }, 1000)
+        "page",
+        "leaf1254",
+        "1.0",
+        "理财_基金定投|定投计算器主页|0|0",
+        ""
+      );
+    }, 1000);
   },
-}
+};
 </script>
 
 <style lang="less" scoped>
@@ -1060,7 +1021,7 @@ export default {
   z-index: 200000;
   width: 100%;
   height: 100%;
-  background: #fff url('../assets/loading.gif') no-repeat center;
+  background: #fff url("../assets/loading.gif") no-repeat center;
   background-size: 28px 28px;
 }
 
@@ -1085,7 +1046,7 @@ export default {
     width: 13px;
     height: 14px;
     margin-left: 89px;
-    background: url('../assets/warning@2x.png') no-repeat;
+    background: url("../assets/warning@2x.png") no-repeat;
     background-size: 100% 100%;
   }
 
@@ -1109,7 +1070,7 @@ export default {
   left: 0;
   width: 200%;
   height: 1px;
-  content: '';
+  content: "";
   background-color: #eeeeee;
   -webkit-transform: scale(0.5, 0.5);
   transform: scale(0.5, 0.5);
@@ -1129,7 +1090,7 @@ export default {
   left: 0;
   width: 200%;
   height: 1px;
-  content: '';
+  content: "";
   background-color: #eeeeee;
   -webkit-transform: scale(0.5, 0.5);
   transform: scale(0.5, 0.5);
@@ -1158,7 +1119,7 @@ export default {
   right: 0;
   width: 1px;
   height: 200%;
-  content: '';
+  content: "";
   background-color: #eeeeee;
   -webkit-transform: scale(0.5, 0.5);
   transform: scale(0.5, 0.5);
@@ -1218,7 +1179,7 @@ export default {
     margin-top: 4.5px;
     margin-left: 25px;
     letter-spacing: 0;
-    background: url('../assets/calculator@2x.png') no-repeat 0;
+    background: url("../assets/calculator@2x.png") no-repeat 0;
     background-size: auto 100%;
   }
 
@@ -1237,7 +1198,7 @@ export default {
     height: 112px;
     margin: 20px 14px 0 16px;
     overflow: hidden;
-    background: url('../assets/bg-box@2x.png') no-repeat;
+    background: url("../assets/bg-box@2x.png") no-repeat;
     background-size: 100% auto;
     border-radius: 4px;
 
@@ -1245,7 +1206,7 @@ export default {
       position: relative;
       height: 20px;
       margin-top: 23px;
-      background: url('../assets/words@3x.png') 20px center no-repeat;
+      background: url("../assets/words@3x.png") 20px center no-repeat;
       background-size: auto 15px;
     }
 
@@ -1334,7 +1295,7 @@ export default {
       .go-select {
         width: 6px;
         height: 10px;
-        background: url('../assets/more2@2x.png') no-repeat;
+        background: url("../assets/more2@2x.png") no-repeat;
         background-size: 100% 100%;
       }
     }
@@ -1509,7 +1470,7 @@ export default {
           /* z-index: -1; */
           width: 200%;
           height: 200%;
-          content: '';
+          content: "";
           border: 1px solid rgba(150, 150, 150, 0.39);
           border-radius: 4px;
           -webkit-transform: scale(0.5, 0.5);
@@ -1529,7 +1490,7 @@ export default {
         }
 
         &::after {
-          content: '';
+          content: "";
           border: none;
         }
       }
@@ -1560,7 +1521,7 @@ export default {
       .select-btn {
         width: 6px;
         height: 11px;
-        background: url('../assets/more2@2x.png') no-repeat;
+        background: url("../assets/more2@2x.png") no-repeat;
         background-size: 100% 100%;
       }
     }
@@ -1572,7 +1533,7 @@ export default {
       left: 0;
       height: 1px;
       pointer-events: none;
-      content: '';
+      content: "";
       background-color: rgba(151, 151, 151, 0.17);
       transform: scale(1, 0.5);
     }
@@ -1633,7 +1594,7 @@ export default {
   line-height: 46px;
   color: #ffffff;
   text-align: center;
-  background: url('../assets/button@2x.png') no-repeat -2px -5px;
+  background: url("../assets/button@2x.png") no-repeat -2px -5px;
   background-size: 100% auto;
 }
 

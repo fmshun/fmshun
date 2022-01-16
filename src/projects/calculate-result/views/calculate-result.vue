@@ -4,14 +4,20 @@
     <topHeader titleWord="计算结果" ref="header"></topHeader>
     <div class="main-content">
       <div class="fund-info">
-        <div class="fund-name" style="height: 28px;line-height: 28px;">
-          <span class="name-title" style="font-size: 20px;">
+        <div class="fund-name" style="height: 28px; line-height: 28px">
+          <span class="name-title" style="font-size: 20px">
             {{ resultData.prdtName }}
           </span>
           <span
             class="code-wrap"
             v-if="judgeIOS"
-            style="width: 56px;height: 19px;margin-left: 7px;font-size: 14px;line-height: 19px;"
+            style="
+              width: 56px;
+              height: 19px;
+              margin-left: 7px;
+              font-size: 14px;
+              line-height: 19px;
+            "
           >
             ({{ resultData.prdtCode }})
           </span>
@@ -19,20 +25,26 @@
           <span
             class="code-wrap"
             v-else
-            style="position: relative;height: 19px;margin-left: 7px;font-size: 14px;line-height: 19px"
+            style="
+              position: relative;
+              height: 19px;
+              margin-left: 7px;
+              font-size: 14px;
+              line-height: 19px;
+            "
           >
-            <span style="position: absolute;top: 0;left: 0;font-size: 14px;">
+            <span style="position: absolute; top: 0; left: 0; font-size: 14px">
               (
             </span>
             <span
               class="andriod-code"
-              style="position: absolute;top: 1.3px;font-size: 14px;"
+              style="position: absolute; top: 1.3px; font-size: 14px"
             >
               {{ resultData.prdtCode }}
             </span>
             <span
               class="right-brack"
-              style="position: absolute;top: 0;font-size: 14px;"
+              style="position: absolute; top: 0; font-size: 14px"
             >
               ){{ judgeLeft() }}
             </span>
@@ -58,7 +70,7 @@
           </div>
           <div class="income-amount">
             <div
-              style="font-weight: bold;"
+              style="font-weight: bold"
               :style="{
                 color:
                   resultData.rate && resultData.rate.indexOf('-') !== -1
@@ -98,16 +110,14 @@
               <div @click="switchClick" class="btn btn-income active">
                 近6月年化收益
               </div>
-              <div @click="switchClick" class="btn btn-cost">
-                成本单价
-              </div>
+              <div @click="switchClick" class="btn btn-cost">成本单价</div>
             </div>
 
             <div v-show="tabIndex === 0">
               <div class="legend invest">
                 <span
                   class="square"
-                  style="width: 4px;height: 4px;border-radius: 2px;"
+                  style="width: 4px; height: 4px; border-radius: 2px"
                 ></span>
                 <div class="word1 two-row-1">
                   定投年化收益
@@ -115,7 +125,7 @@
                 </div>
                 <span
                   class="square-two"
-                  style="width: 4px;height: 4px;border-radius: 2px;"
+                  style="width: 4px; height: 4px; border-radius: 2px"
                 ></span>
                 <div class="word2 two-row-2">
                   单笔投资年化收益
@@ -125,7 +135,7 @@
                 </div>
               </div>
               <!--定投收益涨势chart-->
-              <div class="invest-profit-canvas" style="margin-top: 19px;"></div>
+              <div class="invest-profit-canvas" style="margin-top: 19px"></div>
 
               <div class="why-box">
                 <img
@@ -133,16 +143,14 @@
                   src="../assets/information@2x.png"
                   alt=""
                 />
-                <span @click="explainCost">
-                  为什么要看年化收益率
-                </span>
+                <span @click="explainCost"> 为什么要看年化收益率 </span>
               </div>
             </div>
             <div v-show="tabIndex === 1">
               <div class="legend cost">
                 <span
                   class="square cost"
-                  style="width: 4px;height: 4px;border-radius: 2px;"
+                  style="width: 4px; height: 4px; border-radius: 2px"
                 ></span>
                 <span class="word1">定投持有成本</span>
                 <span class="word-num cost">
@@ -150,7 +158,7 @@
                 </span>
                 <span
                   class="square-two"
-                  style="width: 4px;height: 4px;border-radius: 2px;"
+                  style="width: 4px; height: 4px; border-radius: 2px"
                 ></span>
                 <span class="word2">基金净值走势</span>
                 <span class="word-num two">
@@ -174,10 +182,10 @@
 
         <div class="no-year-info" v-else>
           <!--定投未超过一年-->
-          <div class="no-excess-year" style="width: 20px;height: 20px;">
+          <div class="no-excess-year" style="width: 20px; height: 20px">
             <img
               @click="expandNoYear"
-              style="width: 16px;height: 16px;"
+              style="width: 16px; height: 16px"
               src="../assets/up@2x.png"
               alt=""
             />
@@ -188,22 +196,20 @@
               <div @click="switchClick" class="btn btn-income active">
                 定投收益
               </div>
-              <div @click="switchClick" class="btn btn-cost">
-                成本单价
-              </div>
+              <div @click="switchClick" class="btn btn-cost">成本单价</div>
             </div>
 
             <div v-show="tabIndex === 0">
               <div class="legend invest">
                 <span
                   class="square"
-                  style="width: 4px;height: 4px;border-radius: 2px;"
+                  style="width: 4px; height: 4px; border-radius: 2px"
                 ></span>
                 <span class="word1">定投收益</span>
                 <span class="word-num">{{ showLegend1(resultData) }}</span>
                 <span
                   class="square-two"
-                  style="width: 4px;height: 4px;border-radius: 2px;"
+                  style="width: 4px; height: 4px; border-radius: 2px"
                 ></span>
                 <span class="word2">单笔投资收益</span>
                 <span class="word-num two">
@@ -217,7 +223,7 @@
               <div class="legend cost">
                 <span
                   class="square cost"
-                  style="width: 4px;height: 4px;border-radius: 2px;"
+                  style="width: 4px; height: 4px; border-radius: 2px"
                 ></span>
                 <span class="word1">定投持有成本</span>
                 <span class="word-num cost">
@@ -225,7 +231,7 @@
                 </span>
                 <span
                   class="square-two"
-                  style="width: 4px;height: 4px;border-radius: 2px;"
+                  style="width: 4px; height: 4px; border-radius: 2px"
                 ></span>
                 <span class="word2">基金净值走势</span>
                 <span class="word-num two">
@@ -266,7 +272,7 @@
         </div>
         <div class="year-income-chart">
           <img
-            style="display: block;width: 100%;height: auto;"
+            style="display: block; width: 100%; height: auto"
             src="../assets/charts@3x.png"
             alt=""
           />
@@ -298,65 +304,65 @@
 </template>
 
 <script>
-import base from 'base'
-import topHeader from '../components/top-header'
-import { Chart, linemove } from '@/libs/chart-v2.js'
-import { getCalResult } from '../request/api'
-import loadScripts from '@/utils/loadScripts'
-import { setTimeout } from 'timers'
+import base from "base";
+import topHeader from "../components/top-header";
+import { Chart, linemove } from "@/libs/chart-v2.js";
+import { getCalResult } from "../request/api";
+import loadScripts from "@/utils/loadScripts";
+import { setTimeout } from "timers";
 
 export default {
-  name: 'calculate-result',
+  name: "calculate-result",
   components: { topHeader },
   data() {
     return {
       loading: false,
-      investDate: '',
+      investDate: "",
       reqParam: {},
       resultData: {},
       excessOneYear: false,
       tabIndex: 0,
       firstLoad: true,
-    }
+    };
   },
   computed: {
     judgeIOS() {
-      return base.isIOS()
+      return base.isIOS();
     },
   },
   mounted() {
     loadScripts([
-      '/licai/com/js/buy-process-v3.js',
-      '/common/scripts/local.js',
-      '/common/scripts/prompt.js',
-      '/licai/com/component/js/antiMoneyLaundering.js',
-      '/licai/com/component/js/layer.js',
-      '/licai/com/js/quick-buy-alter.js',
-      '/common/vendor/flexible-0.3.2/flexible.js',
-      '/common/vendor/md5-2.11.0/md5.js',
-      '/licai/com/js/steps-serial.js',
-    ]).then(() => {})
+      "/licai/com/js/buy-process-v3.js",
+      "/common/scripts/local.js",
+      "/common/scripts/prompt.js",
+      "/licai/com/component/js/antiMoneyLaundering.js",
+      "/licai/com/component/js/layer.js",
+      "/licai/com/js/quick-buy-alter.js",
+      "/common/vendor/flexible-0.3.2/flexible.js",
+      "/common/vendor/md5-2.11.0/md5.js",
+      "/licai/com/js/steps-serial.js",
+    ]).then(() => {});
 
     this.getCalResultData((data) => {
       this.$nextTick(() => {
         //定投日期处理,换行展示全部日期
         let start =
           this.reqParam.startDate.substring(0, 4) +
-          '.' +
+          "." +
           this.reqParam.startDate.substring(4, 6) +
-          '.' +
-          this.reqParam.startDate.substring(6, 8)
+          "." +
+          this.reqParam.startDate.substring(6, 8);
         let end =
           this.reqParam.endDate.substring(0, 4) +
-          '.' +
+          "." +
           this.reqParam.endDate.substring(4, 6) +
-          '.' +
-          this.reqParam.endDate.substring(6, 8)
+          "." +
+          this.reqParam.endDate.substring(6, 8);
 
-        if ($('.invest-date')[0].offsetTop === 0) {
-          this.investDate = start.substr(2) + ' - ' + end.substr(2)
+        if ($(".invest-date")[0].offsetTop === 0) {
+          this.investDate = start.substr(2) + " - " + end.substr(2);
         } else {
-          this.investDate = start + ' - ' + end
+          this.investDate = start + " - " + end;
         }
 
         //初始化年化收益折线图
@@ -364,120 +370,120 @@ export default {
             yearProfitList: [],
             profitList: [],
           },
-          date1 = []
+          date1 = [];
         data.investProfitList.forEach((v) => {
-          investData.yearProfitList.push(v.profitRate)
-          investData.profitList.push(v.perProfitRate)
-          date1.push(v.date)
-        })
-        this.drawLineCanvas(investData, date1, '.invest-profit-canvas') //定投收益/年化收益
-      })
+          investData.yearProfitList.push(v.profitRate);
+          investData.profitList.push(v.perProfitRate);
+          date1.push(v.date);
+        });
+        this.drawLineCanvas(investData, date1, ".invest-profit-canvas"); //定投收益/年化收益
+      });
       //温馨提示贴底
       setTimeout(() => {
         if (
-          $('.calculate-result').height() <
+          $(".calculate-result").height() <
           document.documentElement.clientHeight
         ) {
-          $('.kindly-remind').css(
-            'margin-top',
+          $(".kindly-remind").css(
+            "margin-top",
             document.documentElement.clientHeight -
-              $('.calculate-result').height() +
-              'px'
-          )
+              $(".calculate-result").height() +
+              "px"
+          );
         } else {
-          $('.kindly-remind').css('margin-top', '0px')
+          $(".kindly-remind").css("margin-top", "0px");
         }
-        $('.loader-wrapper').hide() //关闭加载动画
+        $(".loader-wrapper").hide(); //关闭加载动画
 
         //弹窗页面禁止背景滑动
-        $('.explain-dialog')[0].addEventListener(
-          'touchmove',
-          function(e) {
-            e.preventDefault()
+        $(".explain-dialog")[0].addEventListener(
+          "touchmove",
+          function (e) {
+            e.preventDefault();
           },
           { passive: false }
-        )
+        );
 
         //legend手机兼容
         if (window.screen.width < 350) {
-          $('.two-row-1').css('margin-right', '10vw')
+          $(".two-row-1").css("margin-right", "10vw");
           // $('.no-year-info .square').css('margin-left', '25px')
           // $('.expand-other-info .invest .square').css('margin-left', '5px')
           // $('.expand-other-info .cost .square').css('margin-left', '15px')
         }
-      }, 500)
-    })
-    setTimeout(function() {
+      }, 500);
+    });
+    setTimeout(function () {
       window.TalkingData.onHTSCEvent(
-        'page',
-        'leaf1255',
-        '1.0',
-        '理财_基金定投|定投计算器结果页面|0|0',
-        ''
-      )
-    }, 1000)
+        "page",
+        "leaf1255",
+        "1.0",
+        "理财_基金定投|定投计算器结果页面|0|0",
+        ""
+      );
+    }, 1000);
   },
   methods: {
     //返回
     goBack() {
-      $('.visual-mask').hide()
-      base.href('http://action:3413')
+      $(".visual-mask").hide();
+      base.href("http://action:3413");
     },
     judgeLeft() {
       this.$nextTick(() => {
-        $('.andriod-code').css('left', $('.right-brack').width() + 'px')
-        $('.right-brack').css(
-          'left',
-          $('.right-brack').width() + $('.andriod-code').width() + 'px'
-        )
-      })
+        $(".andriod-code").css("left", $(".right-brack").width() + "px");
+        $(".right-brack").css(
+          "left",
+          $(".right-brack").width() + $(".andriod-code").width() + "px"
+        );
+      });
     },
     //日期特殊处理
     handleDate(reqParam) {
       if (reqParam.startDate && reqParam.endDate) {
         let start =
           reqParam.startDate.substring(0, 4) +
-          '.' +
+          "." +
           reqParam.startDate.substring(4, 6) +
-          '.' +
-          reqParam.startDate.substring(6, 8)
+          "." +
+          reqParam.startDate.substring(6, 8);
         let end =
           reqParam.endDate.substring(0, 4) +
-          '.' +
+          "." +
           reqParam.endDate.substring(4, 6) +
-          '.' +
-          reqParam.endDate.substring(6, 8)
+          "." +
+          reqParam.endDate.substring(6, 8);
 
-        if ($('.invest-date')[0].offsetTop === 0) {
-          return start.substr(2) + ' - ' + end.substr(2)
+        if ($(".invest-date")[0].offsetTop === 0) {
+          return start.substr(2) + " - " + end.substr(2);
         } else {
-          return start + ' - ' + end
+          return start + " - " + end;
         }
       }
     },
     //定投金额处理
     investType(param) {
-      if (param.periodType === 'M') {
-        return `每月${param.aipDay}号定投${param.amount}元`
-      } else if (param.periodType === 'D') {
-        return `每双周${this.switchWeek(param.aipDay)}定投${param.amount}元`
-      } else if (param.periodType === 'W') {
-        return `每周${this.switchWeek(param.aipDay)}定投${param.amount}元`
-      } else if (param.periodType === '') {
-        return `每个交易日定投${param.amount}元`
+      if (param.periodType === "M") {
+        return `每月${param.aipDay}号定投${param.amount}元`;
+      } else if (param.periodType === "D") {
+        return `每双周${this.switchWeek(param.aipDay)}定投${param.amount}元`;
+      } else if (param.periodType === "W") {
+        return `每周${this.switchWeek(param.aipDay)}定投${param.amount}元`;
+      } else if (param.periodType === "") {
+        return `每个交易日定投${param.amount}元`;
       }
     },
     switchWeek(n) {
-      if (n === '1') {
-        return '一'
-      } else if (n === '2') {
-        return '二'
-      } else if (n === '3') {
-        return '三'
-      } else if (n === '4') {
-        return '四'
-      } else if (n === '5') {
-        return '五'
+      if (n === "1") {
+        return "一";
+      } else if (n === "2") {
+        return "二";
+      } else if (n === "3") {
+        return "三";
+      } else if (n === "4") {
+        return "四";
+      } else if (n === "5") {
+        return "五";
       }
     },
     //legend1,取当天的定投收益/单笔投资收益
@@ -494,10 +500,10 @@ export default {
           // }
           return (
             data.investProfitList[data.investProfitList.length - 1].profitRate +
-            '%'
-          )
+            "%"
+          );
         } else if (this.tabIndex === 1) {
-          return data.costList[data.costList.length - 1].cost
+          return data.costList[data.costList.length - 1].cost;
         }
       }
     },
@@ -515,147 +521,144 @@ export default {
           // }
           return (
             data.investProfitList[data.investProfitList.length - 1]
-              .perProfitRate + '%'
-          )
+              .perProfitRate + "%"
+          );
         } else if (this.tabIndex === 1) {
-          return data.costList[data.costList.length - 1].worth
+          return data.costList[data.costList.length - 1].worth;
         }
       }
     },
     //获取计算结果
     getCalResultData(callback) {
       this.reqParam = {
-        aipDay: base.getUrlParameter('aipDay') || '',
-        amount: base.getUrlParameter('amount'),
-        prdtId: base.getUrlParameter('prdtId'),
-        startDate: base.getUrlParameter('startDate'),
-        endDate: base.getUrlParameter('endDate'),
-        periodType: base.getUrlParameter('periodType') || '',
-      }
-      base.log(this.reqParam)
+        aipDay: base.getUrlParameter("aipDay") || "",
+        amount: base.getUrlParameter("amount"),
+        prdtId: base.getUrlParameter("prdtId"),
+        startDate: base.getUrlParameter("startDate"),
+        endDate: base.getUrlParameter("endDate"),
+        periodType: base.getUrlParameter("periodType") || "",
+      };
+      base.log(this.reqParam);
       getCalResult(this.reqParam).then((data) => {
-        base.log(JSON.parse(data.BINDATA))
+        base.log(JSON.parse(data.BINDATA));
         // $('.loader-wrapper').hide() //关闭加载动画
-        let result = data.BINDATA ? JSON.parse(data.BINDATA) : {}
-        let code = result.code
-        let msg = result.msg
-        if (code === '0') {
-          this.resultData = result.resultData
+        let result = data.BINDATA ? JSON.parse(data.BINDATA) : {};
+        let code = result.code;
+        let msg = result.msg;
+        if (code === "0") {
+          this.resultData = result.resultData;
           // this.resultData.costList=[
           //   {date: "20160905", cost: "1.21", worth: "1.19"}
           // ]
-          if (this.resultData.oneYearMore === 'true') {
-            this.excessOneYear = true
+          if (this.resultData.oneYearMore === "true") {
+            this.excessOneYear = true;
           } else {
-            this.excessOneYear = false
+            this.excessOneYear = false;
           }
 
           if (callback) {
-            callback(result.resultData)
+            callback(result.resultData);
           }
         } else {
-          $('.visual-mask').show()
+          $(".visual-mask").show();
           setTimeout(() => {
-            $('.visual-mask .dialog-content').css({
-              transform: 'scale(1,1)',
-            })
-          }, 100)
+            $(".visual-mask .dialog-content").css({
+              transform: "scale(1,1)",
+            });
+          }, 100);
         }
-      })
+      });
     },
     //定投超过一年展开其他信息
     expandOther(e) {
       if (
-        $('.other-img').hasClass('expand') &&
-        $('.expand-other-info').hasClass('expand')
+        $(".other-img").hasClass("expand") &&
+        $(".expand-other-info").hasClass("expand")
       ) {
-        $('.other-img').removeClass('expand')
-        $('.expand-other-info').removeClass('expand')
-        $('.this-plan-btn').css('margin-top', '16.267vw')
+        $(".other-img").removeClass("expand");
+        $(".expand-other-info").removeClass("expand");
+        $(".this-plan-btn").css("margin-top", "16.267vw");
       } else {
-        $('.other-img').addClass('expand')
-        $('.expand-other-info').addClass('expand')
-        $('.this-plan-btn').css('margin-top', '7.467vw')
+        $(".other-img").addClass("expand");
+        $(".expand-other-info").addClass("expand");
+        $(".this-plan-btn").css("margin-top", "7.467vw");
       }
 
       //温馨提示贴底
       if (
-        $('.calculate-result').height() < document.documentElement.clientHeight
+        $(".calculate-result").height() < document.documentElement.clientHeight
       ) {
-        $('.kindly-remind').css(
-          'margin-top',
+        $(".kindly-remind").css(
+          "margin-top",
           document.documentElement.clientHeight -
-            $('.calculate-result').height() +
-            'px'
-        )
+            $(".calculate-result").height() +
+            "px"
+        );
       } else {
-        $('.kindly-remind').css('margin-top', '0px')
+        $(".kindly-remind").css("margin-top", "0px");
       }
     },
     //定投未超过一年
     expandNoYear(e) {
       if (
-        $(e.target).hasClass('expand') &&
-        $('.no-year-info').hasClass('expand')
+        $(e.target).hasClass("expand") &&
+        $(".no-year-info").hasClass("expand")
       ) {
-        $(e.target).removeClass('expand')
-        $('.no-year-info').removeClass('expand')
-        $('.no-year-info').css('margin-top', '2.133vw')
-        $('.this-plan-btn').css('margin-top', '16.267vw')
+        $(e.target).removeClass("expand");
+        $(".no-year-info").removeClass("expand");
+        $(".no-year-info").css("margin-top", "2.133vw");
+        $(".this-plan-btn").css("margin-top", "16.267vw");
       } else {
-        $(e.target).addClass('expand')
-        $('.no-year-info').addClass('expand')
-        $('.no-year-info').css('margin-top', '6.4vw')
-        $('.this-plan-btn').css('margin-top', '8vw')
+        $(e.target).addClass("expand");
+        $(".no-year-info").addClass("expand");
+        $(".no-year-info").css("margin-top", "6.4vw");
+        $(".this-plan-btn").css("margin-top", "8vw");
       }
       //温馨提示贴底
       if (
-        $('.calculate-result').height() < document.documentElement.clientHeight
+        $(".calculate-result").height() < document.documentElement.clientHeight
       ) {
-        $('.kindly-remind').css(
-          'margin-top',
+        $(".kindly-remind").css(
+          "margin-top",
           document.documentElement.clientHeight -
-            $('.calculate-result').height() +
-            'px'
-        )
+            $(".calculate-result").height() +
+            "px"
+        );
       } else {
-        $('.kindly-remind').css('margin-top', '0px')
+        $(".kindly-remind").css("margin-top", "0px");
       }
     },
     //展开信息tab切换
     switchClick(e) {
-      $(e.target)
-        .addClass('active')
-        .siblings()
-        .removeClass('active')
-      this.tabIndex = $(e.target).index()
+      $(e.target).addClass("active").siblings().removeClass("active");
+      this.tabIndex = $(e.target).index();
       if (this.firstLoad) {
-        this.firstLoad = false
+        this.firstLoad = false;
         let costData = {
             yearProfitList: [],
             profitList: [],
           },
-          date2 = []
+          date2 = [];
         this.resultData.costList.forEach((v) => {
-          costData.yearProfitList.push(v.cost)
-          costData.profitList.push(v.worth)
-          date2.push(v.date)
-        })
+          costData.yearProfitList.push(v.cost);
+          costData.profitList.push(v.worth);
+          date2.push(v.date);
+        });
         this.$nextTick(() => {
-          this.drawLineCanvas(costData, date2, '.cost-profit-canvas') //成本单价
-        })
+          this.drawLineCanvas(costData, date2, ".cost-profit-canvas"); //成本单价
+        });
       }
     },
     /**
      * 画折线图 近半年收益走势图
      */
-    drawLineCanvas: function(data, date, dom) {
+    drawLineCanvas: function (data, date, dom) {
       // console.log(data, date, dom)
       let self = this,
         yearPrintList = data.yearProfitList,
         printList = data.profitList,
         charts = [],
-        valueY = []
+        valueY = [];
 
       let chartOptions = {
         dom: dom,
@@ -665,65 +668,65 @@ export default {
         series: [
           {
             // 年化收益
-            type: 'line',
+            type: "line",
             drawType: 0, //画图方式
             data: yearPrintList,
             lineStyle: {
-              lineWidth: '0.5',
-              strokeStyle: '#277CFF',
-              fillStyle: ['rgba(196,224,255,.4)', 'rgba(246,250,255,0.4)'],
-              font: '10px PingFangSC-Regular',
+              lineWidth: "0.5",
+              strokeStyle: "#277CFF",
+              fillStyle: ["rgba(196,224,255,.4)", "rgba(246,250,255,0.4)"],
+              font: "10px PingFangSC-Regular",
             },
             //节点 木有则不显示 默认不展示
             node: {
               //类型目前为元
-              type: 'circle',
+              type: "circle",
               drawIndex: [yearPrintList.length - 1], //需要画的索引号
               // size 目前为半径,后续可为数组 扩展对应类型
               size: 2,
               show: true,
               lineStyle: {
-                strokeStyle: 'rgba(192,210,255,0.8)',
+                strokeStyle: "rgba(192,210,255,0.8)",
                 lineWidth: 5,
-                fillStyle: '#277CFF',
+                fillStyle: "#277CFF",
               },
               //负值
               negativeLineStyle: {
-                strokeStyle: 'rgba(192,210,255,0.8)',
+                strokeStyle: "rgba(192,210,255,0.8)",
                 lineWidth: 5,
-                fillStyle: '#277CFF',
+                fillStyle: "#277CFF",
               },
             },
           },
           {
             // 单笔投资
-            type: 'line',
+            type: "line",
             drawType: 0, //画图方式
             data: printList,
             lineStyle: {
-              lineWidth: '0.5',
-              strokeStyle: '#FF9E7A',
-              fillStyle: ['rgba(249,152,68,.3)', 'rgba(249,152,68,0)'],
-              font: '10px PingFangSC-Regular',
+              lineWidth: "0.5",
+              strokeStyle: "#FF9E7A",
+              fillStyle: ["rgba(249,152,68,.3)", "rgba(249,152,68,0)"],
+              font: "10px PingFangSC-Regular",
             },
             //节点 木有则不显示 默认不展示
             node: {
               //类型目前为元
-              type: 'circle',
+              type: "circle",
               drawIndex: [printList.length - 1], //需要画的索引号
               // size 目前为半径,后续可为数组 扩展对应类型
               size: 2,
               show: true,
               lineStyle: {
-                strokeStyle: 'rgba(249,152,68,0.40)',
+                strokeStyle: "rgba(249,152,68,0.40)",
                 lineWidth: 5,
-                fillStyle: '#F99844',
+                fillStyle: "#F99844",
               },
               //负值
               negativeLineStyle: {
-                strokeStyle: 'rgba(249,152,68,0.40)',
+                strokeStyle: "rgba(249,152,68,0.40)",
                 lineWidth: 5,
-                fillStyle: '#F99844',
+                fillStyle: "#F99844",
               },
             },
           },
@@ -735,12 +738,12 @@ export default {
           bottom: 27,
         },
         events: {
-          touchstart: function(x) {},
-          touchmove: function(x) {},
-          touchend: function(x) {},
+          touchstart: function (x) {},
+          touchmove: function (x) {},
+          touchend: function (x) {},
         },
-        touchCanvas: function(obj) {
-          charts.push(obj)
+        touchCanvas: function (obj) {
+          charts.push(obj);
           let params = {
             dom: dom,
             scale: 1,
@@ -752,8 +755,8 @@ export default {
             size: 3, //圆的半径
             left: 53,
             isShow: 1,
-          }
-          new linemove(charts, params)
+          };
+          new linemove(charts, params);
         },
         xAxis: {
           show: true,
@@ -766,63 +769,63 @@ export default {
               date.length - 1
             ].substring(4, 6)}-${date[date.length - 1].substring(6, 8)}`,
           ],
-          dataBind: 'bottom',
+          dataBind: "bottom",
           // x轴文字 位置 top 顶轴 middle 中轴 bottom 底轴
           margin: [11, 0, 0, 3],
           lineStyle: {
             lineWidth: 1,
-            strokeStyle: '#ECEEF0',
+            strokeStyle: "#ECEEF0",
           },
           textStyle: {
-            font: '10px HelveticaNeue-Light',
-            fillStyle: 'rgba(128, 128, 128, 0.45)',
-            textBaseline: 'middle',
-            fontWeight: 'lighter',
+            font: "10px HelveticaNeue-Light",
+            fillStyle: "rgba(128, 128, 128, 0.45)",
+            textBaseline: "middle",
+            fontWeight: "lighter",
           },
         },
         yAxis: {
           show: true,
           avgNum: 4,
           margin: self.tabIndex === 0 ? [5, 5, 10, 3] : [5, 5, 10, 6.5],
-          labelAlign: 'outside',
+          labelAlign: "outside",
           basisPoint: false,
           lineStyle: {
-            type: 'dashed',
+            type: "dashed",
             lineWidth: 1,
-            strokeStyle: 'rgba(224, 226, 228, 0.6)', //#ECEEF0
+            strokeStyle: "rgba(224, 226, 228, 0.6)", //#ECEEF0
           },
           textStyle: {
-            font: '10px HelveticaNeue-Light',
-            fillStyle: 'rgba(128, 128, 128, 0.67)',
-            textAlign: 'right',
-            textBaseline: 'middle',
+            font: "10px HelveticaNeue-Light",
+            fillStyle: "rgba(128, 128, 128, 0.67)",
+            textAlign: "right",
+            textBaseline: "middle",
           },
-          formatter: function(value) {
+          formatter: function (value) {
             //防止坐标值重叠
-            valueY.push(value)
-            let obj = {}
+            valueY.push(value);
+            let obj = {};
             for (let i of valueY) {
               if (!obj[i]) {
-                obj[i] = true
+                obj[i] = true;
               } else {
-                return ''
+                return "";
               }
             }
             //收益与成本Y坐标区分
             if (self.tabIndex === 0) {
               // 保留一位小数
-              value = value.toFixed(2)
+              value = value.toFixed(2);
               // 坐标点，添加缩进
               if (value == 0) {
-                return ' 0.00%'
+                return " 0.00%";
               }
               // 大于0的情况
               else {
-                return value + '%'
+                return value + "%";
               }
             } else if (self.tabIndex === 1) {
-              value = value.toFixed(2)
-              return value
+              value = value.toFixed(2);
+              return value;
             }
           },
         },
@@ -833,42 +836,42 @@ export default {
            * @param {object} ctx canvas的画图对象
            * @param {object} option 画图插件的选项对象
            */
-          drawYCustomGraph: function(ctx, option) {
-            let width = $(option.dom).width() - 5
-            let height = $(option.dom).height() - 0
+          drawYCustomGraph: function (ctx, option) {
+            let width = $(option.dom).width() - 5;
+            let height = $(option.dom).height() - 0;
             // 中间横线
-            ctx.beginPath()
-            ctx.moveTo(self.tabIndex === 0 ? 50 : 40, height / 2)
-            ctx.lineTo(width, height / 2)
-            ctx.strokeStyle = 'rgba(211,211,211,.6)'
-            ctx.lineWidth = 0.5
-            ctx.stroke()
+            ctx.beginPath();
+            ctx.moveTo(self.tabIndex === 0 ? 50 : 40, height / 2);
+            ctx.lineTo(width, height / 2);
+            ctx.strokeStyle = "rgba(211,211,211,.6)";
+            ctx.lineWidth = 0.5;
+            ctx.stroke();
           },
         },
-      }
-      new Chart(chartOptions)
+      };
+      new Chart(chartOptions);
     },
     //年化收益/解读成本单价
     explainCost() {
-      $('.explain-dialog').show()
+      $(".explain-dialog").show();
     },
     //我知道了
     knowClick() {
-      $('.explain-dialog').hide()
+      $(".explain-dialog").hide();
     },
     //按此计算定投
     thisPlanInvest() {
-      let self = this
+      let self = this;
       window.TalkingData.onHTSCEvent(
-        'click',
-        'leaf1255',
-        '1.0',
-        '理财_基金定投|定投计算器结果页面|底部|当前主入口按钮',
-        'main_enter={按此计划定投}'
-      )
+        "click",
+        "leaf1255",
+        "1.0",
+        "理财_基金定投|定投计算器结果页面|底部|当前主入口按钮",
+        "main_enter={按此计划定投}"
+      );
       window.buyProcess.preCheck({
         //来源定投
-        fromBranch: 'isAip',
+        fromBranch: "isAip",
         //产品代码
         productCode: this.resultData.prdtCode,
         //产品名称 三匹配页面要需要用到必传
@@ -878,51 +881,51 @@ export default {
         //基金公司名称
         companyName: this.resultData.managerName,
         //产品类型2-基金
-        productType: '2',
-        isCounter: '1',
+        productType: "2",
+        isCounter: "1",
         //定投时间
         period: this.resultData.period,
         //定投金额
         amount: this.reqParam.amount,
         //定投周期
-        periodType: (function() {
-          if (self.reqParam.periodType === '') {
-            return '1'
-          } else if (self.reqParam.periodType === 'W') {
-            return '2'
-          } else if (self.reqParam.periodType === 'D') {
-            return '3'
-          } else if (self.reqParam.periodType === 'M') {
-            return '4'
+        periodType: (function () {
+          if (self.reqParam.periodType === "") {
+            return "1";
+          } else if (self.reqParam.periodType === "W") {
+            return "2";
+          } else if (self.reqParam.periodType === "D") {
+            return "3";
+          } else if (self.reqParam.periodType === "M") {
+            return "4";
           }
         })(),
         //定投日
         aipDay: this.reqParam.aipDay,
-      })
+      });
       // let url = `http://action:10061/?fullscreen=1&&shownavigationbar=0&&url=/web_cft/financing-aip/new-aip.html?prdtCode=${this.resultData.prdtCode}&prdtId=${this.reqParam.prdtId}`
       // base.href(url)
     },
     //重新计算
     againCount() {
       window.TalkingData.onHTSCEvent(
-        'click',
-        'leaf1255',
-        '1.0',
-        '理财_基金定投|定投计算器结果页面|底部|当前主入口按钮',
-        'main_enter={重新计算}'
-      )
+        "click",
+        "leaf1255",
+        "1.0",
+        "理财_基金定投|定投计算器结果页面|底部|当前主入口按钮",
+        "main_enter={重新计算}"
+      );
       setTimeout(() => {
         //返回计算器计算页面
-        base.href('http://action:3413')
-      }, 500)
+        base.href("http://action:3413");
+      }, 500);
     },
   },
-}
+};
 </script>
 
 <style lang="less">
-@import '/licai/com/css/quick-buy-al.css';
-@import '/licai/com/component/css/layer.css';
+@import "/licai/com/css/quick-buy-al.css";
+@import "/licai/com/component/css/layer.css";
 
 /* loading动画 */
 .loading {
@@ -930,7 +933,7 @@ export default {
   z-index: 200990;
   width: 100%;
   height: 100%;
-  background: #fff url('../assets/loading.gif') no-repeat center;
+  background: #fff url("../assets/loading.gif") no-repeat center;
   background-size: 28px 28px;
 }
 
@@ -1073,7 +1076,7 @@ export default {
           left: 0;
           height: 1px;
           pointer-events: none;
-          content: '';
+          content: "";
           background-color: rgba(70, 102, 199, 0.27);
           opacity: 0.5;
           transform: scale(1, 0.5);
@@ -1175,7 +1178,7 @@ export default {
           width: 200%;
           height: 200%;
           overflow: auto;
-          content: '';
+          content: "";
           background-color: #fff0;
           border: 1px solid #dcdcdc;
           border-top-left-radius: 8px;
@@ -1199,7 +1202,7 @@ export default {
           width: 200%;
           height: 200%;
           overflow: auto;
-          content: '';
+          content: "";
           background-color: #fff0;
           border: 1px solid #dcdcdc;
           border-top-right-radius: 8px;
@@ -1292,7 +1295,7 @@ export default {
           width: 200%;
           height: 200%;
           overflow: auto;
-          content: '';
+          content: "";
           background-color: #fff0;
           border: 1px solid #dcdcdc;
           border-top-left-radius: 8px;
@@ -1316,7 +1319,7 @@ export default {
           width: 200%;
           height: 200%;
           overflow: auto;
-          content: '';
+          content: "";
           background-color: #fff0;
           border: 1px solid #dcdcdc;
           border-top-right-radius: 8px;
@@ -1527,7 +1530,7 @@ export default {
       left: 0;
       height: 1px;
       pointer-events: none;
-      content: '';
+      content: "";
       background-color: #ededed;
       -webkit-transform: scale(1, 0.5);
       transform: scale(1, 0.5);
@@ -1581,7 +1584,7 @@ export default {
       left: 0;
       height: 1px;
       pointer-events: none;
-      content: '';
+      content: "";
       background-color: #ededed;
       -webkit-transform: scale(1, 0.5);
       transform: scale(1, 0.5);
@@ -1598,7 +1601,7 @@ export default {
   line-height: 46px;
   color: #ffffff;
   text-align: center;
-  background: url('../assets/button.png') no-repeat;
+  background: url("../assets/button.png") no-repeat;
   background-size: 340px 60px;
 }
 .reset-btn {
@@ -1622,7 +1625,7 @@ export default {
     width: 200%;
     height: 200%;
     overflow: auto;
-    content: '';
+    content: "";
     background-color: #fff0;
     border: 1px solid rgba(53, 101, 236, 0.27);
     border-radius: 44px;
@@ -1706,7 +1709,7 @@ export default {
       left: 0;
       height: 1px;
       pointer-events: none;
-      content: '';
+      content: "";
       background-color: #ededed;
       -webkit-transform: scale(1, 0.5);
       transform: scale(1, 0.5);
